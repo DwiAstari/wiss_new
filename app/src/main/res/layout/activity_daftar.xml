@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".DaftarActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="30dp"
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Silahkan Daftar Terlebih Dahulu."
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_marginTop="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:text="KELUARGAKU"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:id="@+id/tv_daftar_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/daftar_username"
+                android:layout_width="292dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="50dp"
+                android:background="@color/white"
+                android:hint="@string/nama" />
+
+            <TextView
+                android:id="@+id/tv_daftar_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/daftar_email"
+                android:layout_width="292dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="50dp"
+                android:background="@color/white"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/tv_daftar_No_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No.Hp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/daftar_No_hp"
+                android:layout_width="292dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="50dp"
+                android:background="@color/white"
+                android:hint="@string/nohp"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_password1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/password1"
+                android:layout_width="292dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="50dp"
+                android:background="@color/white"
+                android:hint="password" />
+
+            <TextView
+                android:id="@+id/tv_daftar_umur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Umur"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/daftar_umur"
+                android:layout_width="292dp"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:hint="@string/umur"
+                android:layout_marginLeft="50dp"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_daftar_domisili"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Domisili"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/daftar_domisili"
+                android:layout_width="292dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="50dp"
+                android:background="@color/white"
+                android:hint="@string/Domisili" />
+
+            <Button
+                android:id="@+id/Daftar"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="333dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="40dp"
+                android:background="@color/primaryVariant"
+                android:text="Daftar"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

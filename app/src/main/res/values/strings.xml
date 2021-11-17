@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Aplikasi Keluargaku</string>
+    <string name="Domisili">domisili</string>
+    <string name="umur">umur</string>
+    <string name="nohp">no.hp</string>
+    <string name="email">email</string>
+    <string name="nama">nama</string>
+    <string name="login_user">Nama Pengguna</string>
+    <string name="login_username">nama</string>
+    <string name="login_password">Kata Sandi</string>
+    <string name="login_password_hint">kata sandi</string>
+    <string name="layanan_harian">Layanan Harian</string>
+    <string name="foto_kegitatan">Foto Kegiatan</string>
+    <string name="save">Save</string>
+</resources>

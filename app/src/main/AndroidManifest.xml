@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dwiastari.wiss">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logokeluargaku"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logokeluargaku"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Wiss">
+        <activity
+            android:name=".IsiKegiatanAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KegiatanAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DaftarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
