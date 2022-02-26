@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dwiastari.wiss">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".BaseApplication"
@@ -20,7 +21,7 @@
             android:name=".DashboardActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.masyarakat.login.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".DaftarActivity"

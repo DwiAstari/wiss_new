@@ -21,10 +21,13 @@
         <entry key="..\:/wiss/app/src/main/res/layout/indicator_selected.xml" value="0.16979166666666667" />
         <entry key="..\:/wiss/app/src/main/res/layout/indicator_selector.xml" value="0.16979166666666667" />
         <entry key="..\:/wiss/app/src/main/res/layout/onboarding_screen_layout.xml" value="0.12318840579710146" />
+        <entry key="app/src/main/res/layout/activity_kegiatan_admin.xml" value="0.178125" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23125" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
