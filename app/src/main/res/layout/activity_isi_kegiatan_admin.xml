@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="16.80dp"
     android:background="@color/primary"
-    tools:context=".IsiKegiatanAdminActivity">
+    tools:context=".ui.admin.IsiKegiatanAdminActivity">
 
     <EditText
         android:id="@+id/inputjudulbuku"

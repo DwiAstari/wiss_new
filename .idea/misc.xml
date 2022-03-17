@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github-repo/wiss_new/app/src/main/res/layout/activity_isi_kegiatan_admin.xml" value="0.264" />
+        <entry key="..\:/Github-repo/wiss_new/app/src/main/res/layout/activity_kegiatan_admin.xml" value="0.24375" />
+        <entry key="..\:/Github-repo/wiss_new/app/src/main/res/layout/activity_list_kegiatan_admin.xml" value="0.24375" />
+        <entry key="..\:/Github-repo/wiss_new/app/src/main/res/layout/item_artikel.xml" value="0.24375" />
         <entry key="..\:/wiss/app/src/main/res/drawable-v24/unselected.xml" value="0.1859375" />
         <entry key="..\:/wiss/app/src/main/res/drawable/circle.xml" value="0.2703125" />
         <entry key="..\:/wiss/app/src/main/res/drawable/ic_add_photo.xml" value="0.2703125" />
@@ -27,7 +31,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

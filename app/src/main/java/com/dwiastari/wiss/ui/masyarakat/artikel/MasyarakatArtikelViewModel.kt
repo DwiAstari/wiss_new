@@ -1,5 +1,6 @@
 package com.dwiastari.wiss.ui.masyarakat.artikel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dwiastari.wiss.model.Artikel
@@ -15,15 +16,17 @@ class MasyarakatArtikelViewModel @Inject constructor(
 ) : ViewModel(){
 
     //define list of the data that has been fethed from API
-    val listArticle : ArrayList<Artikel> = arrayListOf()
+    val listArticle = MutableLiveData<ArrayList<Artikel>>()
 
     fun onLoad() {
         viewModelScope.launch {
+            var articlesResponse: ArrayList<Artikel> = arrayListOf()
             when (val response = repository.getArticle() ) {
                 is Resource.Success -> {
                     response.data?.artikel?.forEach {
-                        listArticle.add(it)
+                        articlesResponse.add(it)
                     }
+                    listArticle.postValue(articlesResponse)
                 }
                 is Resource.Error -> {
                     print("error")

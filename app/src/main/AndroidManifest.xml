@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
-            android:name=".IsiKegiatanAdminActivity"
+            android:name=".ui.admin.IsiKegiatanAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".KegiatanAdminActivity"
+            android:name=".ui.admin.KegiatanAdminActivity"
             android:exported="true" />
         <activity
             android:name=".DashboardActivity"
