@@ -8,7 +8,9 @@ import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ActivityIsiKegiatanAdminBinding
 import com.dwiastari.wiss.databinding.ActivityListKegiatanAdminBinding
 import com.dwiastari.wiss.ui.masyarakat.artikel.MasyarakatArtikelViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KegiatanAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListKegiatanAdminBinding
     private lateinit var adapter: ListKegiatanAdminAdapter
@@ -18,7 +20,7 @@ class KegiatanAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityListKegiatanAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        adapter = ListKegiatanAdminAdapter()
         binding.rvList.setHasFixedSize(true)
 
         showRecyclerList()
