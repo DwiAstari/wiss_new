@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".ui.masyarakat.login.LoginActivity">
+    tools:context=".ui.admin.login.LoginActivity">
 
 
     <TextView
@@ -77,7 +77,7 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <EditText
-        android:id="@+id/login_username"
+        android:id="@+id/etUsername"
         android:layout_width="309dp"
         android:layout_height="60dp"
         android:background="@color/white"
@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.606" />
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/etPassword"
         android:layout_width="310dp"
         android:layout_height="55dp"
         android:background="@color/white"
@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.848" />
 
     <Button
-        android:id="@+id/masukbtn"
+        android:id="@+id/btnLogin"
         android:layout_width="311dp"
         android:layout_height="59dp"
         android:background="#01458E"
@@ -161,5 +161,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.952" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="401dp"
+        tools:ignore="MissingConstraints"
+        android:foregroundGravity="center"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

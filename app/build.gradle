@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    apply plugin: 'kotlin-android-extensions'
     //kotlin
     implementation "androidx.core:core-ktx:$coreVersion"
 
@@ -56,7 +56,10 @@ dependencies {
     //implementation "com.ismaeldivita.chipnavigation:chip-navigation-bar:$chipNavigationVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //noinspection GradleCompatible
+    implementation "com.android.support:support-v4:1.0.0"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
 
     //testing
     testImplementation "junit:junit:$junitVersion"

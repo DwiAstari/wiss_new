@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@color/primary"
@@ -9,62 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/profileIv"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_camera" />
 
         <LinearLayout
-            android:layout_width="242dp"
-            android:layout_height="match_parent"
+            android:layout_width="309dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="60dp"
-            android:layout_toEndOf="@+id/profileIv"
-            android:layout_toRightOf="@+id/profileIv"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/judulartikel"
+                android:id="@+id/hari"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="judul artikel"
+                android:text="Hari"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tanggalartikel"
+                android:id="@+id/layanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-light"
-                android:text="tanggal artikel"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/isiartikel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="isi artikel"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/areaartikel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="Area artikel"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/penulis"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="penulis"
+                android:text="Layanan"
                 android:textSize="15dp" />
 
         </LinearLayout>
@@ -96,4 +65,5 @@
             android:src="@drawable/ic_edit" />
 
     </RelativeLayout>
+
 </LinearLayout>
