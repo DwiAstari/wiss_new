@@ -18,8 +18,8 @@ interface MasyarakatService{
     @GET("slide/data_slide.php")
     suspend fun getSlide() : Response<SlideResponse>
 
-    @GET("video/data_video.php")
-    suspend fun getVideo() : Response<VideoResponse>
+//    @GET("video/data_video.php")
+//    suspend fun getVideo() : Response<VideoResponse>
 
     @FormUrlEncoded
     @POST("login_admin/loginadmin.php")
