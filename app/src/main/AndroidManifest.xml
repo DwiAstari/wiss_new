@@ -13,17 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
-            android:name=".ui.admin.video.VideoAdminActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.admin.slide.SlideAdminActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".ui.admin.layanan.LayananAdminActivity"
             android:exported="true" />
@@ -44,7 +36,13 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

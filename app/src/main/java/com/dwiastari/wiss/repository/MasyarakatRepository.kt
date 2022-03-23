@@ -34,12 +34,4 @@ class MasyarakatRepository @Inject constructor(
             return Resource.Error(it.message())
         }
     }
-    suspend fun getVideo() : Resource<VideoResponse>{
-        masyarakatService.getVideo().let {
-            if (it.isSuccessful){
-                it.body()?.let { return Resource.Success(it) }
-            }
-            return Resource.Error(it.message())
-        }
-    }
 }
