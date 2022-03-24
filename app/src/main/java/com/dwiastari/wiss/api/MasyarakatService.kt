@@ -15,8 +15,10 @@ interface MasyarakatService{
     @GET("layananharian/data_layanan.php")
     suspend fun getLayanan() : Response<LayananResponse>
 
-    @GET("slide/data_slide.php")
+    @GET("slides/data_slides.php")
     suspend fun getSlide() : Response<SlideResponse>
+
+
 
     @FormUrlEncoded
     @POST("login_admin/loginadmin.php")

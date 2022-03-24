@@ -6,10 +6,13 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dwiastari.wiss.MainActivity
 import com.dwiastari.wiss.ui.admin.DashboardActivity
 import com.dwiastari.wiss.api.RetrofitClient
 import com.dwiastari.wiss.databinding.ActivityLoginBinding
 import com.dwiastari.wiss.model.ResponseLogin
+import kotlinx.android.synthetic.main.activity_daftar.*
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +26,10 @@ class LoginActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+
+        btnback_l.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         binding!!.btnLogin.setOnClickListener {
             user = binding!!.etUsername.text.toString()

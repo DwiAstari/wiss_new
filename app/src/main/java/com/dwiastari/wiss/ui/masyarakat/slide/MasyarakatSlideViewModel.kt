@@ -19,13 +19,13 @@ class MasyarakatSlideViewModel @Inject constructor(
     
     fun onLoad() {
         viewModelScope.launch { 
-            var slidesResponse: ArrayList<Slide> = arrayListOf()
+            var slideResponse: ArrayList<Slide> = arrayListOf()
             when (val response = repository.getSlide() ) {
                 is Resource.Success -> {
                     response.data?.slide?.forEach { 
-                        slidesResponse.add(it)
+                        slideResponse.add(it)
                     }
-                    listSlide.postValue(slidesResponse)
+                    listSlide.postValue(slideResponse)
                 }
                 is Resource.Error -> {
                     print("error")

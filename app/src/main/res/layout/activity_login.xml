@@ -8,6 +8,25 @@
     tools:context=".ui.admin.login.LoginActivity">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/primaryVariant"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnback_l"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="336dp"
@@ -80,8 +99,9 @@
         android:id="@+id/etUsername"
         android:layout_width="309dp"
         android:layout_height="60dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_text"
         android:hint="@string/login_username"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"
@@ -107,7 +127,7 @@
         android:id="@+id/etPassword"
         android:layout_width="310dp"
         android:layout_height="55dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_text"
         android:hint="@string/login_password_hint"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -151,7 +171,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="311dp"
         android:layout_height="59dp"
-        android:background="#01458E"
+        android:background="@drawable/rounded_corner"
         android:text="Masuk"
         android:textColor="@color/white"
         android:textSize="30dp"
