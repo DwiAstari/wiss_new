@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.dwiastari.wiss.adapter.OnBoardingViewPagerAdapter
 import com.dwiastari.wiss.model.OnBoardingData
+import com.dwiastari.wiss.utils.SharePreferences
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_walk_trough.*
 
@@ -19,10 +20,13 @@ class WalkTroughActivity : AppCompatActivity() {
     val dots = arrayOfNulls<TextView>(7)
     var currentpage: Int = 0
     val  a: Int = 8
+    lateinit var pre: SharePreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_walk_trough)
 
+        pre = SharePreferences(this)
         dotIndicator(currentpage)
 
         initAction()
@@ -70,13 +74,17 @@ class WalkTroughActivity : AppCompatActivity() {
             if (screenPager.currentItem + 1 < dots.size) {
                 screenPager.currentItem += 1
             } else {
+                pre.firstInstall = true
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         tv_lewati.setOnClickListener{
+            pre.firstInstall = true
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

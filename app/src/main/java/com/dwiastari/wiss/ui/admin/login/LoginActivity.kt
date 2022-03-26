@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity(){
 
         btnback_l.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         binding!!.btnLogin.setOnClickListener {
@@ -47,7 +48,6 @@ class LoginActivity : AppCompatActivity(){
                 getData()
                 }
             }
-
         }
     }
 
