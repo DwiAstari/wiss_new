@@ -17,13 +17,23 @@ interface MasyarakatService{
 
     @GET("slides/data_slides.php")
     suspend fun getSlide() : Response<SlideResponse>
-
-
-
+    
     @FormUrlEncoded
-    @POST("login_admin/loginadmin.php")
-    fun loginAdmin(
-        @Field( "post_username") username :String,
-        @Field( "post_password") password :String
+    @POST("loginuser/loginuser.php")
+    fun loginUser(
+        @Field("username") username: String,
+        @Field("password") password: String
     ): Call<ResponseLogin>
+    
+    @FormUrlEncoded
+    @POST("loginuser/register.php")
+    fun registerUser(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("phone") phone: String,
+        @Field("age") age: String,
+        @Field("address") address: String,
+        ): Call<ResponseLogin>
 }

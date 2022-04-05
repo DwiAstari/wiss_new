@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dwiastari.wiss.MainActivity
 import com.dwiastari.wiss.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_faqactivity.*
 
+@AndroidEntryPoint
 class FAQActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

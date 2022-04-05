@@ -11,9 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,144 +34,211 @@
                     app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
             </LinearLayout>
 
-
             <TextView
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Silahkan Daftar Terlebih Dahulu."
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_marginTop="30sp"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="Silahkan Daftar Terlebih Dahulu"
+                android:textSize="25sp" />
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_nama"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:text="KELUARGAKU"
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-
-            <TextView
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="50dp"
-                android:id="@+id/tv_daftar_username"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Nama"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nama"
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/daftar_username"
-                android:layout_width="292dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/shape_text"
-                android:hint="@string/nama" />
-
-            <TextView
-                android:id="@+id/tv_daftar_email"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Email"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_username"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="E-mail"
-                android:layout_marginLeft="50dp"
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/daftar_email"
-                android:layout_width="292dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/shape_text"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress" />
-
-            <TextView
-                android:id="@+id/tv_daftar_No_hp"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Username"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No.Hp"
-                android:layout_marginLeft="50dp"
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/daftar_No_hp"
-                android:layout_width="292dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/shape_text"
-                android:hint="@string/nohp"
-                android:inputType="number" />
-
-            <TextView
-                android:id="@+id/tv_password1"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Kata Sandi"
+                app:passwordToggleEnabled="true"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Password"
-                android:layout_marginLeft="50dp"
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/password1"
-                android:layout_width="292dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/shape_text"
-                android:hint="password" />
-
-            <TextView
-                android:id="@+id/tv_daftar_umur"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="No. HP"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_age"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Umur"
-                android:layout_marginLeft="50dp"
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/daftar_umur"
-                android:layout_width="292dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/shape_text"
-                android:hint="@string/umur"
-                android:inputType="number" />
-
-            <TextView
-                android:id="@+id/tv_daftar_domisili"
-                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Umur"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Domisili"
-                android:layout_marginLeft="50dp"
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-
-            <EditText
-                android:id="@+id/daftar_domisili"
-                android:layout_width="292dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/shape_text"
-                android:hint="@string/Domisili" />
-
-            <Button
-                android:id="@+id/Daftar"
-                android:layout_width="333dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/rounded_corner"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Domisili"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_role"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Role"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:errorEnabled="true">
+        
+                <AutoCompleteTextView
+                    android:id="@+id/etRole"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"/>
+    
+            </com.google.android.material.textfield.TextInputLayout>
+    
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
                 android:text="Daftar"
                 android:textColor="@color/white"
-                android:textSize="30dp" />
-
+                app:cornerRadius="15dp"/>
         </LinearLayout>
     </ScrollView>
 

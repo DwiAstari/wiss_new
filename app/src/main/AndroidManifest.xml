@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dwiastari.wiss">
-
+    
     <uses-permission android:name="android.permission.INTERNET" />
-
+    
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
+            android:name=".ui.masyarakat.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".WalkTroughActivity"
             android:exported="true" />
         <activity
@@ -20,7 +23,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+    
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,7 +40,7 @@
             android:name=".ui.admin.KegiatanAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.admin.DashboardActivity"
+            android:name=".ui.admin.DashboardAdminActivity"
             android:exported="true" />
         <activity
             android:name=".ui.admin.login.LoginActivity"
