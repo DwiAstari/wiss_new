@@ -16,6 +16,15 @@ class MasyarakatRepository @Inject constructor(
             return Resource.Error(it.message())
         }
     }
+    
+    suspend fun deleteArticle(id_artikel: String) : Resource<DeleteArtikelResponse>{
+        masyarakatService.deleteArticle(id_artikel).let {
+            if(it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
 
     suspend fun getLayanan() : Resource<LayananResponse>{
         masyarakatService.getLayanan().let {

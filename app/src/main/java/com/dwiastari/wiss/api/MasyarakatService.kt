@@ -11,6 +11,9 @@ import retrofit2.http.POST
 interface MasyarakatService{
     @GET("artikel/data_artikel.php")
     suspend fun getArticle() : Response<ArtikelResponse>
+    
+    @GET("artikel/delete_artikel.php")
+    suspend fun deleteArticle(@Field("id_artikel") id_artikel: String) : Response<DeleteArtikelResponse>
 
     @GET("layananharian/data_layanan.php")
     suspend fun getLayanan() : Response<LayananResponse>

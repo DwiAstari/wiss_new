@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
+            android:name=".ui.admin.EditKegiatanActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.masyarakat.DashboardActivity"
             android:exported="false" />
         <activity

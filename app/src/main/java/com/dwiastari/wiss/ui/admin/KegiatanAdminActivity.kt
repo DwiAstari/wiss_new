@@ -1,7 +1,9 @@
 package com.dwiastari.wiss.ui.admin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiastari.wiss.R
@@ -22,7 +24,9 @@ class KegiatanAdminActivity : AppCompatActivity() {
         setContentView(binding.root)
         adapter = ListKegiatanAdminAdapter()
         binding.rvList.setHasFixedSize(true)
-
+        
+        binding.btnAddArticle.setOnClickListener { startActivity(Intent(this, IsiKegiatanAdminActivity::class.java)) }
+        
         showRecyclerList()
     }
 
@@ -30,10 +34,12 @@ class KegiatanAdminActivity : AppCompatActivity() {
         binding.rvList.layoutManager = LinearLayoutManager(this)
         binding.rvList.adapter = adapter
 
+        binding.loading.visibility = View.VISIBLE
         masyarakatArtikelViewModel.onLoad()
         masyarakatArtikelViewModel.listArticle.observe(this) {
             if (it != null) {
                 adapter.setData(it)
+                binding.loading.visibility = View.GONE
             }
         }
     }

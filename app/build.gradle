@@ -104,16 +104,14 @@ dependencies {
 
     // Dagger-Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
+//    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion"
+//    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
 
     //room database
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"

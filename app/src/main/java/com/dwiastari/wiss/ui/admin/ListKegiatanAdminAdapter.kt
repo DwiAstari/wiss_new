@@ -1,5 +1,8 @@
 package com.dwiastari.wiss.ui.admin
 
+import android.content.Intent
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,24 +23,31 @@ class ListKegiatanAdminAdapter :
         notifyDataSetChanged()
     }
 
-    fun ImageView.loadImage(url: String?) {
-        Glide.with(this.context)
-            .load(url)
-            .placeholder(R.color.background)
-            .centerCrop()
-            .into(this)
-    }
-
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemArtikelBinding.bind(itemView)
         fun bind(items: Artikel) {
             with(itemView) {
                 binding.judulartikel.text = items.judul_artikel
                 binding.tanggalartikel.text = items.tanggal_artikel
-                binding.isiartikel.text = items.isi_artikel
-                binding.areaartikel.text = items.area
-                binding.profileIv.loadImage(items.foto_kegiatan)
-                binding.penulis.text = items.penulis
+                binding.isiartikel.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Html.fromHtml(items.isi_artikel, Html.FROM_HTML_MODE_COMPACT)
+                } else {
+                    Html.fromHtml(items.isi_artikel)
+                }
+//                binding.areaartikel.text = items.area
+//                binding.penulis.text = items.penulis
+                
+                Glide.with(context)
+                    .load(items.foto_kegiatan)
+                    .placeholder(R.color.background)
+                    .centerCrop()
+                    .into(binding.profileIv)
+                
+                setOnClickListener{
+                    val intent = Intent(context, EditKegiatanActivity::class.java)
+                    intent.putExtra(EditKegiatanActivity.ARTIKEL_EXTRA, items)
+                    context.startActivity(intent)
+                }
             }
         }
     }

@@ -30,4 +30,6 @@
 
     <color name="textGrey">#868A8F</color>
     <color name="header">#ffc736</color>
+    
+    <color name="red">#F44336</color>
 </resources>

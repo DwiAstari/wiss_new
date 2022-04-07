@@ -1,5 +1,9 @@
 package com.dwiastari.wiss.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Artikel(
     val area: String,
     val foto_kegiatan: String,
@@ -9,4 +13,4 @@ data class Artikel(
     val penulis: String,
     val status: String,
     val tanggal_artikel: String
-)
+): Parcelable
