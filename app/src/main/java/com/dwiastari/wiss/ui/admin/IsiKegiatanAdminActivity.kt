@@ -1,18 +1,58 @@
 package com.dwiastari.wiss.ui.admin
 
-import androidx.appcompat.app.AppCompatActivity
+import android.Manifest
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import com.dwiastari.wiss.R
+import android.os.Environment
+import android.provider.MediaStore
+import android.provider.OpenableColumns
+import android.text.Html
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.dwiastari.wiss.databinding.ActivityIsiKegiatanAdminBinding
 import com.dwiastari.wiss.model.Artikel
 import com.dwiastari.wiss.ui.admin.EditKegiatanActivity.Companion.ARTIKEL_EXTRA
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_edit_kegiatan.*
+import kotlinx.android.synthetic.main.activity_isi_kegiatan_admin.*
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.InputStream
+
 
 @AndroidEntryPoint
 class IsiKegiatanAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIsiKegiatanAdminBinding
+    private val viewModel: IsiKegiatanViewModel by viewModels()
     private var isEdit = false
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private val REQUEST_IMAGE_PICK = 2
+    private val REQUEST_ID_MULTIPLE_PERMISSIONS = 3
+    private var inputStream: InputStream? = null
+    private var filename: String? = null
+    
+    private var PERMISSIONS = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA
+    )
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +71,79 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
                 edtIsi.setText(artikel?.isi_artikel)
             }
         } else {
-        
+            binding.btnadd.setOnClickListener {
+                val judul = edtJudul.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                val tanggal = edtTanggal.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                val isi = edtIsi.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                val penulis = edtPenulis.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                val area = edtArea.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                val status = "".toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                val requestFoto = RequestBody.create("image/*".toMediaTypeOrNull(), inputStream!!.readBytes())
+                val foto = requestFoto?.let { it1 -> MultipartBody.Part.createFormData("foto_kegiatan", filename, it1) }
+    
+                if (foto != null) {
+                    viewModel.addArticle(judul, tanggal, isi, area, penulis, status, foto)
+                }
+            }
         }
+        
+        binding.btnChoose.setOnClickListener {
+            if (!hasPermissions(this, *PERMISSIONS)) {
+                ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_ID_MULTIPLE_PERMISSIONS)
+            } else {
+                openGalleryForImage()
+            }
+        }
+    
+        viewModel.message.observe(this){
+            if(it != null){
+                Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                if(it.contains("created")){
+                    finish()
+                }
+            }
+        }
+        
+    }
+    
+    fun hasPermissions(context: Context?, vararg permissions: String?): Boolean {
+        if (context != null) {
+            for (permission in permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission!!) != PackageManager.PERMISSION_GRANTED) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    private fun openGalleryForImage() {
+    
+        selectImageFromGalleryResult.launch("image/*")
+        
+    }
+    
+    private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let { 
+            binding.inputfotokegiatan.setImageURI(it)
+            inputStream = contentResolver.openInputStream(it)
+            filename = getPathFromURI(it)
+        }
+    }
+    
+    private fun getPathFromURI(uri: Uri?): String {
+        var path = ""
+        if (contentResolver != null) {
+            val cursor = contentResolver.query(uri!!, null, null, null, null)
+            if (cursor != null) {
+                cursor.moveToFirst()
+                val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME)
+                path = cursor.getString(idx)
+                cursor.close()
+            }
+        }
+        Log.d("path", path)
+        return path
     }
     
 }

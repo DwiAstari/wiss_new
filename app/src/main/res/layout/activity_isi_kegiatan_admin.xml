@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:hint="Area"
+                android:hint="Penulis"
                 app:boxBackgroundColor="@color/lightGreyBackground">
                 <EditText
                     android:id="@+id/edtPenulis"
@@ -126,20 +126,32 @@
                 android:textSize="20dp"
                 android:text="@string/foto_kegitatan"/>
             
-            <ImageView
-                android:id="@+id/inputfotokegiatan"
-                android:layout_width="150dp"
-                android:layout_height="100dp"
-                android:textColorHint="@color/black"
-                android:layout_marginTop="10dp"
-                android:textSize="16.80dp"
-                android:inputType="number"
-                android:background="@color/white"
-                android:maxLines="1"
-                android:src="@drawable/ic_add_photo"
-                android:layout_marginRight="19.20dp"
-                android:layout_marginEnd="19.20dp"
-                android:padding="16.80dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:strokeColor="@color/textGrey"
+                    app:strokeWidth="1dp"
+                    app:cardCornerRadius="10dp">
+                    <ImageView
+                        android:id="@+id/inputfotokegiatan"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_camera"/>
+                </com.google.android.material.card.MaterialCardView>
+                
+                <Button
+                    android:id="@+id/btn_choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Pilih Foto"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
     
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

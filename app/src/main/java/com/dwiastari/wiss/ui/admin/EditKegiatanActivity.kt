@@ -68,6 +68,15 @@ class EditKegiatanActivity : AppCompatActivity() {
             }
         }
         
+        viewModel.message.observe(this){
+            if(it != null){
+                Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                if(it.contains("updated")){
+                    finish()
+                }
+            }
+        }
+        
 //        Toast.makeText(this, artikel?.judul_artikel, Toast.LENGTH_SHORT).show()
     }
 }

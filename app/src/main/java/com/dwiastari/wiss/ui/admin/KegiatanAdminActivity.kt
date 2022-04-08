@@ -25,6 +25,8 @@ class KegiatanAdminActivity : AppCompatActivity() {
         adapter = ListKegiatanAdminAdapter()
         binding.rvList.setHasFixedSize(true)
         
+        binding.btnbackL.setOnClickListener { finish() }
+        
         binding.btnAddArticle.setOnClickListener { startActivity(Intent(this, IsiKegiatanAdminActivity::class.java)) }
         
         showRecyclerList()
