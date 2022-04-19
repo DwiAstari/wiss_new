@@ -21,18 +21,20 @@ class LayananAdminActivity : AppCompatActivity() {
         setContentView(binding.root)
         adapter = ListLayananAdminAdapter()
         binding.rvLayanan.setHasFixedSize(true)
+        binding.btnbackL.setOnClickListener { finish() }
 
         showRecyclerList()
     }
-        private fun showRecyclerList(){
-            binding.rvLayanan.layoutManager = LinearLayoutManager(this)
-            binding.rvLayanan.adapter = adapter
+    
+    private fun showRecyclerList(){
+        binding.rvLayanan.layoutManager = LinearLayoutManager(this)
+        binding.rvLayanan.adapter = adapter
 
-            masyarakatLayananViewModel.onLoad()
-            masyarakatLayananViewModel.listLayanan.observe(this){
-                if (it != null) {
-                    adapter.setData(it)
-                }
+        masyarakatLayananViewModel.onLoad()
+        masyarakatLayananViewModel.listLayanan.observe(this){
+            if (it != null) {
+                adapter.setData(it)
             }
         }
+    }
 }

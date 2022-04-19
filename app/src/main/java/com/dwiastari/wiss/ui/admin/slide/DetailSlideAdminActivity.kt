@@ -42,6 +42,7 @@ class DetailSlideAdminActivity : AppCompatActivity() {
         }
         
         binding.apply {
+            btnbackL.setOnClickListener { finish() }
             judulSlide.text = slide?.judul_slide
             statusSlide.text = "Status: ${slide?.status}"
             

@@ -29,6 +29,7 @@ class AddVideoActivity : AppCompatActivity() {
         isEdit = video == null
     
         binding.apply {
+            btnbackL.setOnClickListener { finish() }
             edtJudul.addTextChangedListener(EmptyTextWatcher(layoutJudul, "Isi Judul"))
             edtLink.addTextChangedListener(EmptyTextWatcher(layoutLink, "Isi Link"))
             

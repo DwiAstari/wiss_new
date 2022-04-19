@@ -12,7 +12,9 @@ import com.dwiastari.wiss.databinding.ActivityEbookAdminBinding
 import com.dwiastari.wiss.model.Ebook
 import com.dwiastari.wiss.ui.admin.slide.AddSlideActivity
 import com.dwiastari.wiss.ui.admin.ebook.EbookAdminViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EbookAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEbookAdminBinding
     private lateinit var adapter: ListEbookAdapter

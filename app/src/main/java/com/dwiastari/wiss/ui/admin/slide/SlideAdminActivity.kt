@@ -27,6 +27,8 @@ class SlideAdminActivity : AppCompatActivity() {
         binding.btnAddSlide.setOnClickListener {
             startActivity(Intent(this, AddSlideActivity::class.java))
         }
+        
+        binding.btnbackL.setOnClickListener { finish() }
 
        showRecyclerList()
     }

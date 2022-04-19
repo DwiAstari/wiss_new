@@ -9,7 +9,9 @@ import com.dwiastari.wiss.databinding.ActivityAddEbookBinding
 import com.dwiastari.wiss.model.Ebook
 import com.dwiastari.wiss.ui.admin.ebook.AddEbookViewModel
 import com.dwiastari.wiss.utils.EmptyTextWatcher
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddEbookActivity : AppCompatActivity() {
     companion object{
         const val EXTRA_EBOOK = "ebook"
@@ -28,6 +30,7 @@ class AddEbookActivity : AppCompatActivity() {
         isEdit = ebook == null
     
         binding.apply {
+            btnbackL.setOnClickListener { finish() }
             edtJudul.addTextChangedListener(EmptyTextWatcher(layoutJudul, "Isi Judul"))
             edtLink.addTextChangedListener(EmptyTextWatcher(layoutLink, "Isi Link"))
         

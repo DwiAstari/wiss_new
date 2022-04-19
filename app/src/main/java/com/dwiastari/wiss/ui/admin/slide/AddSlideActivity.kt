@@ -65,6 +65,7 @@ class AddSlideActivity : AppCompatActivity() {
         }
         
         binding.apply {
+            btnbackL.setOnClickListener { finish() }
             edtJudul.addTextChangedListener(EmptyTextWatcher(layoutJudul, "Isi Judul Slide"))
             binding.btnChoose.setOnClickListener {
                 if (!hasPermissions(this@AddSlideActivity, *PERMISSIONS)) {

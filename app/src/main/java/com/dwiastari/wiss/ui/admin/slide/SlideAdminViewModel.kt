@@ -22,7 +22,7 @@ class SlideAdminViewModel @Inject constructor(
             var slideResponse: ArrayList<Slide> = arrayListOf()
             when (val response = repository.getSlide() ) {
                 is Resource.Success -> {
-                    response.data?.slide?.forEach {
+                    response.data?.slides?.forEach {
                         slideResponse.add(it)
                     }
                     listSlide.postValue(slideResponse)

@@ -54,6 +54,8 @@ class VideoAdminActivity : AppCompatActivity() {
         binding.btnAddVideo.setOnClickListener {
             startActivity(Intent(this, AddSlideActivity::class.java))
         }
+        
+        binding.btnbackL.setOnClickListener { finish() }
     
         showRecyclerList()
     }

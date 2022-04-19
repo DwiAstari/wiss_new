@@ -79,6 +79,8 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
                 openGalleryForImage()
             }
         }
+        
+        binding.btnbackL.setOnClickListener { finish() }
     
         viewModel.message.observe(this){
             if(it != null){
