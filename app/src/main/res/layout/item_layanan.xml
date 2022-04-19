@@ -2,68 +2,31 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@color/primary"
-    android:orientation="horizontal">
-
-    <RelativeLayout
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    android:padding="10dp"
+    android:background="@color/lightGreyBackground"
+    android:orientation="vertical">
+        
+    <TextView
+        android:id="@+id/hariLayanan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <LinearLayout
-            android:layout_width="309dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="60dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/hari"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hari"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/layanan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="Layanan"
-                android:textSize="15dp" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/delete_product"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="11dp"
-            android:layout_weight="1"
-            android:contentDescription="Android SQLIte Example"
-            android:src="@drawable/ic_baseline_delete" />
-
-        <ImageView
-            android:id="@+id/edit_product"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="46dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:contentDescription="Android SQLIte Example"
-            android:src="@drawable/ic_edit" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:text="judul artikel"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/isiLayanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:justificationMode="inter_word"
+        android:text="isi artikelisi isi artikelisi isi artikelisi isi artikelisi isi artikelisi isi artikelisi isi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikelisi artikel"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
 </LinearLayout>

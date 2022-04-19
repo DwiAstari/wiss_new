@@ -1,4 +1,4 @@
-package com.dwiastari.wiss.ui.admin
+package com.dwiastari.wiss.ui.admin.kegiatan
 
 import android.content.Intent
 import android.os.Build

@@ -15,24 +15,5 @@ class MasyarakatLayananViewModel @Inject constructor(
     var repository: MasyarakatRepository
 ) : ViewModel(){
 
-    //define list of the data that has been fethed from API
-    val listLayanan = MutableLiveData<ArrayList<Layanan>>()
 
-    fun onLoad() {
-        viewModelScope.launch {
-            var layananResponse: ArrayList<Layanan> = arrayListOf()
-            when (val response = repository.getLayanan() ) {
-                is Resource.Success -> {
-                    response.data?.layanan?.forEach {
-                        layananResponse.add(it)
-                    }
-                    listLayanan.postValue(layananResponse)
-                }
-                is Resource.Error -> {
-                    print("error")
-                    //action.postValue(LoginViewModel.ACTION_LOGIN_ERROR)
-                }
-            }
-        }
-    }
 }

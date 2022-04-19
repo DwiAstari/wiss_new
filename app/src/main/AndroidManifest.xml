@@ -3,7 +3,6 @@
     package="com.dwiastari.wiss">
     
     <uses-permission android:name="android.permission.INTERNET" />
-    
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -14,7 +13,8 @@
         </intent>
     </queries>
     
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
     
     <application
@@ -26,7 +26,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
-            android:name=".ui.admin.EditKegiatanActivity"
+            android:name=".ui.admin.ebook.AddEbookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.ebook.EbookAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.video.AddVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.video.VideoAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.slide.AddSlideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.slide.DetailSlideAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.layanan.EditLayananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.kegiatan.EditKegiatanActivity"
             android:exported="false" />
         <activity
             android:name=".ui.masyarakat.DashboardActivity"
@@ -50,10 +71,10 @@
             android:name=".ui.admin.layanan.LayananAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.admin.IsiKegiatanAdminActivity"
+            android:name=".ui.admin.kegiatan.IsiKegiatanAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.admin.KegiatanAdminActivity"
+            android:name=".ui.admin.kegiatan.KegiatanAdminActivity"
             android:exported="true" />
         <activity
             android:name=".ui.admin.DashboardAdminActivity"
@@ -67,12 +88,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-    
+        
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.dwiastari.wiss.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />

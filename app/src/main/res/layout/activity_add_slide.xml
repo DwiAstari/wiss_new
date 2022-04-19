@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.admin.kegiatan.IsiKegiatanAdminActivity">
+    tools:context=".ui.admin.slide.AddSlideActivity">
     
     <View
         android:id="@+id/view_top"
@@ -36,30 +35,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-    
+            
             <TextView
                 android:id="@+id/tv_judul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Tambah Kegiatan"
+                android:text="Tambah Slide"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
-    
+            
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/primary"/>
-    
+            
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_judul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:hint="Judul Artikel"
-                app:boxBackgroundColor="@color/lightGreyBackground">
+                android:hint="Judul Slide"
+                app:boxBackgroundColor="@color/lightGreyBackground"
+                app:errorEnabled="true">
                 
                 <EditText
                     android:id="@+id/edtJudul"
@@ -68,57 +69,29 @@
                     android:inputType="text"
                     android:imeOptions="actionNext"
                     android:maxLines="1"/>
-                
+            
             </com.google.android.material.textfield.TextInputLayout>
     
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:hint="Tanggal Artikel"
-                app:boxBackgroundColor="@color/lightGreyBackground">
-                <EditText
-                    android:id="@+id/edtTanggal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:hint="Status Slide"
+                app:boxBackgroundColor="@color/lightGreyBackground"
+                android:visibility="gone"
+                app:errorEnabled="true">
+        
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:imeOptions="actionNext"
                     android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
     
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:hint="Area"
-                app:boxBackgroundColor="@color/lightGreyBackground">
-                <EditText
-                    android:id="@+id/edtArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"/>
             </com.google.android.material.textfield.TextInputLayout>
-    
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:hint="Penulis"
-                app:boxBackgroundColor="@color/lightGreyBackground">
-                <EditText
-                    android:id="@+id/edtPenulis"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
-                    android:maxLines="1"/>
-            </com.google.android.material.textfield.TextInputLayout>
-    
+            
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -138,7 +111,7 @@
                     app:strokeWidth="1dp"
                     app:cardCornerRadius="10dp">
                     <ImageView
-                        android:id="@+id/inputfotokegiatan"
+                        android:id="@+id/imgSlides"
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:src="@drawable/ic_camera"/>
@@ -152,35 +125,29 @@
                     android:text="Pilih Foto"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
-    
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:hint="Isi Artikel"
-                app:boxBackgroundColor="@color/lightGreyBackground">
-                <EditText
-                    android:id="@+id/edtIsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="text|textMultiLine"
-                    android:gravity="start"
-                    android:imeOptions="actionDone" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnadd"
-                android:text="@string/save"
-                android:textColor="@color/white"
-                android:background="@color/primaryVariant"/>
         
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/btnadd"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:background="@color/primaryVariant"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="401dp"
+        tools:ignore="MissingConstraints"
+        android:foregroundGravity="center"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

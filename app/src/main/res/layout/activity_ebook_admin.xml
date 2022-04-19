@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.admin.ebook.EbookAdminActivity">
     
     <View
         android:id="@+id/view_top"
@@ -35,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Data Slide"
+            android:text="Data Ebook"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
@@ -47,15 +48,15 @@
             android:background="@color/primary"/>
         
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSlide"
+            android:id="@+id/rvEbook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            tools:listitem="@layout/item_slide"/>
+            tools:listitem="@layout/item_video"/>
     </LinearLayout>
     
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAddSlide"
+        android:id="@+id/btnAddEbook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -76,4 +77,6 @@
         tools:ignore="MissingConstraints"
         android:foregroundGravity="center"
         android:visibility="gone"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

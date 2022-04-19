@@ -1,5 +1,5 @@
 package com.dwiastari.wiss.model
 
-data class DeleteArtikelResponse (
+data class DefaultResponse (
     val message: String
         )

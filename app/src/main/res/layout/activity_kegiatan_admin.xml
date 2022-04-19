@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="5.20dp"
-    tools:context=".ui.admin.KegiatanAdminActivity">
+    tools:context=".ui.admin.kegiatan.KegiatanAdminActivity">
 <!--    android:id="@+id/activity_to_kegiatanadmin">-->
 
             <androidx.recyclerview.widget.RecyclerView

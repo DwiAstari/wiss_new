@@ -6,12 +6,12 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemArtikelBinding
 import com.dwiastari.wiss.model.Artikel
+import com.dwiastari.wiss.ui.admin.kegiatan.EditKegiatanActivity
 
 class ListKegiatanAdminAdapter :
     RecyclerView.Adapter<ListKegiatanAdminAdapter.ListViewHolder>() {

@@ -15,22 +15,5 @@ class MasyarakatSlideViewModel @Inject constructor(
     var repository: MasyarakatRepository
 ) : ViewModel(){
     
-    val listSlide = MutableLiveData<ArrayList<Slide>>()
-    
-    fun onLoad() {
-        viewModelScope.launch { 
-            var slideResponse: ArrayList<Slide> = arrayListOf()
-            when (val response = repository.getSlide() ) {
-                is Resource.Success -> {
-                    response.data?.slide?.forEach { 
-                        slideResponse.add(it)
-                    }
-                    listSlide.postValue(slideResponse)
-                }
-                is Resource.Error -> {
-                    print("error")
-                }
-            }
-        }
-    }
+
 }

@@ -1,19 +1,11 @@
-package com.dwiastari.wiss.ui.admin
+package com.dwiastari.wiss.ui.admin.kegiatan
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
-import android.provider.OpenableColumns
-import android.text.Html
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,18 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.dwiastari.wiss.databinding.ActivityIsiKegiatanAdminBinding
 import com.dwiastari.wiss.model.Artikel
-import com.dwiastari.wiss.ui.admin.EditKegiatanActivity.Companion.ARTIKEL_EXTRA
+import com.dwiastari.wiss.ui.admin.kegiatan.EditKegiatanActivity.Companion.ARTIKEL_EXTRA
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_isi_kegiatan_admin.*
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
 import java.io.InputStream
 
 
@@ -42,8 +29,6 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIsiKegiatanAdminBinding
     private val viewModel: IsiKegiatanViewModel by viewModels()
     private var isEdit = false
-    private val REQUEST_IMAGE_CAPTURE = 1
-    private val REQUEST_IMAGE_PICK = 2
     private val REQUEST_ID_MULTIPLE_PERMISSIONS = 3
     private var inputStream: InputStream? = null
     private var filename: String? = null

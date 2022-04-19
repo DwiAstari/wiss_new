@@ -206,30 +206,6 @@
     
             </com.google.android.material.textfield.TextInputLayout>
     
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layout_role"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:hint="Role"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxBackgroundColor="@color/white"
-                app:errorEnabled="true">
-        
-                <AutoCompleteTextView
-                    android:id="@+id/etRole"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusableInTouchMode="false"
-                    android:inputType="text"
-                    android:imeOptions="actionNext"/>
-    
-            </com.google.android.material.textfield.TextInputLayout>
-    
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
@@ -241,5 +217,16 @@
                 app:cornerRadius="15dp"/>
         </LinearLayout>
     </ScrollView>
-
+    
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="401dp"
+        tools:ignore="MissingConstraints"
+        android:foregroundGravity="center"
+        android:visibility="visible"/>
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

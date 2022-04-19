@@ -1,5 +1,6 @@
-package com.dwiastari.wiss.ui.admin.slide
+package com.dwiastari.wiss.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemSlideBinding
 import com.dwiastari.wiss.model.Slide
+import com.dwiastari.wiss.ui.admin.slide.DetailSlideAdminActivity
 
 class ListSlideAdminAdapter :
         RecyclerView.Adapter<ListSlideAdminAdapter.ListViewHolder>() {
@@ -30,12 +32,10 @@ class ListSlideAdminAdapter :
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemSlideBinding.bind(itemView)
-        fun bind(items: Slide) {
+        fun bind(items: Slide, position: Int) {
             with(itemView) {
-                binding.judulSlide.text = items.judul_slide
-                binding.fotoSlide.loadImage(items.foto_slides)
-                binding.status.text = items.status
-                binding.noUrut.text = items.no_urut
+                binding.tvJudul.text = "$position. ${items.judul_slide}"
+                binding.imgSlides.loadImage(items.foto_slides)
             }
         }
     }
@@ -46,7 +46,13 @@ class ListSlideAdminAdapter :
         }
 
         override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-            holder.bind(mData[position])
+            holder.bind(mData[position], position)
+            holder.itemView.apply {
+                setOnClickListener {
+                    val intent = Intent(context, DetailSlideAdminActivity::class.java)
+                    intent.putExtra(DetailSlideAdminActivity.EXTRA_SLIDE, mData[position])
+                }
+            }
         }
 
         override fun getItemCount(): Int {
