@@ -102,8 +102,7 @@
                 android:gravity="start"
                 android:justificationMode="inter_word"
                 android:inputType="textMultiLine"
-                android:imeOptions="actionNext"
-                android:maxLines="1"/>
+                android:imeOptions="actionDone"/>
     
         </com.google.android.material.textfield.TextInputLayout>
             

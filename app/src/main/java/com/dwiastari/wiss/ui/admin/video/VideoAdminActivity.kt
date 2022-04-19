@@ -45,7 +45,9 @@ class VideoAdminActivity : AppCompatActivity() {
             }
     
             override fun onEdit(video: Video) {
-            
+                val intent = Intent(this@VideoAdminActivity, AddVideoActivity::class.java)
+                intent.putExtra(AddVideoActivity.EXTRA_VIDEO, video)
+                startActivity(intent)
             }
     
         })

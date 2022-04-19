@@ -27,7 +27,7 @@ class AddEbookActivity : AppCompatActivity() {
         setContentView(binding.root)
     
         val ebook = intent.extras?.getParcelable<Ebook>(EXTRA_EBOOK)
-        isEdit = ebook == null
+        isEdit = ebook != null
     
         binding.apply {
             btnbackL.setOnClickListener { finish() }

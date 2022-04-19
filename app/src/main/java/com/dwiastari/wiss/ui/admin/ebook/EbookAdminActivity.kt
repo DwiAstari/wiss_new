@@ -12,6 +12,7 @@ import com.dwiastari.wiss.databinding.ActivityEbookAdminBinding
 import com.dwiastari.wiss.model.Ebook
 import com.dwiastari.wiss.ui.admin.slide.AddSlideActivity
 import com.dwiastari.wiss.ui.admin.ebook.EbookAdminViewModel
+import com.dwiastari.wiss.ui.admin.video.AddVideoActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,7 +46,9 @@ class EbookAdminActivity : AppCompatActivity() {
             }
             
             override fun onEdit(ebook: Ebook) {
-                
+                val intent = Intent(this@EbookAdminActivity, AddEbookActivity::class.java)
+                intent.putExtra(AddEbookActivity.EXTRA_EBOOK, ebook)
+                startActivity(intent)
             }
             
         })
@@ -54,6 +57,8 @@ class EbookAdminActivity : AppCompatActivity() {
         binding.btnAddEbook.setOnClickListener {
             startActivity(Intent(this, AddSlideActivity::class.java))
         }
+        
+        binding.btnbackL.setOnClickListener { finish() }
         
         showRecyclerList()
     }

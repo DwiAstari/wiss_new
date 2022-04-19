@@ -50,7 +50,7 @@ class AddSlideActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         val slides = intent.extras?.getParcelable<Slide>(DetailSlideAdminActivity.EXTRA_SLIDE)
-        val isEdit = slides != null
+        isEdit = slides != null
         
         viewModel.apply {
             loading.observe(this@AddSlideActivity){
@@ -102,13 +102,15 @@ class AddSlideActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                val judul = edtJudul.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
-                val status = "Tampil".toRequestBody("multipart/form-data".toMediaTypeOrNull())
-                val requestFoto = RequestBody.create("image/*".toMediaTypeOrNull(), inputStream!!.readBytes())
-                val foto = requestFoto?.let { it1 -> MultipartBody.Part.createFormData("foto_kegiatan", filename, it1) }
-                
-                if(foto != null){
-                    viewModel.addSlide(judul, status, foto)
+                btnadd.setOnClickListener {
+                    val judul = edtJudul.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                    val status = "Tampil".toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                    val requestFoto = RequestBody.create("image/*".toMediaTypeOrNull(), inputStream!!.readBytes())
+                    val foto = requestFoto?.let { it1 -> MultipartBody.Part.createFormData("foto_kegiatan", filename, it1) }
+    
+                    if(foto != null){
+                        viewModel.addSlide(judul, status, foto)
+                    }
                 }
             }
         }

@@ -26,7 +26,7 @@ class AddVideoActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         val video = intent.extras?.getParcelable<Video>(EXTRA_VIDEO)
-        isEdit = video == null
+        isEdit = video != null
     
         binding.apply {
             btnbackL.setOnClickListener { finish() }

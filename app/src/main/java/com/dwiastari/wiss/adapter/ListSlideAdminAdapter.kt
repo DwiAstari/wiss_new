@@ -51,6 +51,7 @@ class ListSlideAdminAdapter :
                 setOnClickListener {
                     val intent = Intent(context, DetailSlideAdminActivity::class.java)
                     intent.putExtra(DetailSlideAdminActivity.EXTRA_SLIDE, mData[position])
+                    context.startActivity(intent)
                 }
             }
         }
