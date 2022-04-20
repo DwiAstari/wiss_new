@@ -51,7 +51,7 @@ class DetailSlideAdminActivity : AppCompatActivity() {
                 .into(imgSlides)
             
             btnDelete.setOnClickListener {
-            
+                viewModel.deleteSlide(slide!!.id_slide)
             }
             
             btnEdit.setOnClickListener {

@@ -55,7 +55,7 @@ class EbookAdminActivity : AppCompatActivity() {
         binding.rvEbook.setHasFixedSize(true)
         
         binding.btnAddEbook.setOnClickListener {
-            startActivity(Intent(this, AddSlideActivity::class.java))
+            startActivity(Intent(this, AddEbookActivity::class.java))
         }
         
         binding.btnbackL.setOnClickListener { finish() }

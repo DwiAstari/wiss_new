@@ -29,8 +29,6 @@ class SlideAdminActivity : AppCompatActivity() {
         }
         
         binding.btnbackL.setOnClickListener { finish() }
-
-       showRecyclerList()
     }
 
     private fun showRecyclerList() {
@@ -43,5 +41,11 @@ class SlideAdminActivity : AppCompatActivity() {
                 adapter.setData(it)
             }
         }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+    
+        showRecyclerList()
     }
 }

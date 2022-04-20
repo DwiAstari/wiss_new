@@ -129,7 +129,7 @@ class MasyarakatRepository @Inject constructor(
     }
     
     suspend fun updateVideo(id: String, judul: String, link: String): Resource<DefaultResponse>{
-        masyarakatService.updateSlides(id, judul, link).let {
+        masyarakatService.updateVideo(id, judul, link).let {
             if(it.isSuccessful){
                 it.body()?.let { return Resource.Success(it) }
             }
@@ -165,7 +165,7 @@ class MasyarakatRepository @Inject constructor(
     }
     
     suspend fun updateEbook(id: String, judul: String, link: String): Resource<DefaultResponse>{
-        masyarakatService.updateSlides(id, judul, link).let {
+        masyarakatService.updateEbook(id, judul, link).let {
             if(it.isSuccessful){
                 it.body()?.let { return Resource.Success(it) }
             }

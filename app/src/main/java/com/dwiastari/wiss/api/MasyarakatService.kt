@@ -57,7 +57,7 @@ interface MasyarakatService{
     ): Response<DefaultResponse>
     
     @FormUrlEncoded
-    @POST("artikel/delete_artikel.php")
+    @POST("artikel/delete_slides.php")
     suspend fun deleteSlides(@Field("id_slide") id_slide: String) : Response<DefaultResponse>
     
     @GET("video/data_video.php")

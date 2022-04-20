@@ -1,6 +1,7 @@
 package com.dwiastari.wiss.ui.admin.kegiatan
 
 import android.Manifest
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -22,6 +23,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.InputStream
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -70,6 +72,10 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
                     viewModel.addArticle(judul, tanggal, isi, area, penulis, status, foto)
                 }
             }
+        }
+        
+        binding.edtTanggal.setOnClickListener{
+            showDatePicker();
         }
         
         binding.btnChoose.setOnClickListener {
@@ -131,6 +137,24 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
         }
         Log.d("path", path)
         return path
+    }
+    
+    private fun showDatePicker(){
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+    
+    
+        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        
+            // Display Selected date in textbox
+            val monthVal: String = if(monthOfYear > 9) "${monthOfYear+1}" else "0${monthOfYear+1}"
+            binding.edtTanggal.setText("$year-$monthVal-$dayOfMonth")
+        
+        }, year, month, day)
+    
+        dpd.show()
     }
     
 }

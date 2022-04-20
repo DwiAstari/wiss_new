@@ -54,7 +54,7 @@ class VideoAdminActivity : AppCompatActivity() {
         binding.rvVideo.setHasFixedSize(true)
     
         binding.btnAddVideo.setOnClickListener {
-            startActivity(Intent(this, AddSlideActivity::class.java))
+            startActivity(Intent(this, AddVideoActivity::class.java))
         }
         
         binding.btnbackL.setOnClickListener { finish() }
