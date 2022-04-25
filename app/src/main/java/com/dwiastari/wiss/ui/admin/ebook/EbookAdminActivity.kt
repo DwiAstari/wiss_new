@@ -74,4 +74,9 @@ class EbookAdminActivity : AppCompatActivity() {
             }
         }
     }
+    
+    override fun onResume() {
+        super.onResume()
+        showRecyclerList()
+    }
 }

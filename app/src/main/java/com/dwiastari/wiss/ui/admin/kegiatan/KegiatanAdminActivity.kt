@@ -28,7 +28,7 @@ class KegiatanAdminActivity : AppCompatActivity() {
         
         binding.btnAddArticle.setOnClickListener { startActivity(Intent(this, IsiKegiatanAdminActivity::class.java)) }
         
-        showRecyclerList()
+        
     }
 
     private fun showRecyclerList() {
@@ -43,5 +43,10 @@ class KegiatanAdminActivity : AppCompatActivity() {
                 binding.loading.visibility = View.GONE
             }
         }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        showRecyclerList()
     }
 }

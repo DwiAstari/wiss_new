@@ -23,7 +23,6 @@ class LayananAdminActivity : AppCompatActivity() {
         binding.rvLayanan.setHasFixedSize(true)
         binding.btnbackL.setOnClickListener { finish() }
 
-        showRecyclerList()
     }
     
     private fun showRecyclerList(){
@@ -36,5 +35,10 @@ class LayananAdminActivity : AppCompatActivity() {
                 adapter.setData(it)
             }
         }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        showRecyclerList()
     }
 }

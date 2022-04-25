@@ -19,7 +19,6 @@ class MasyarakatRepository @Inject constructor(
         }
     }
     
-    
     suspend fun deleteArticle(id_artikel: String) : Resource<DefaultResponse>{
         masyarakatService.deleteArticle(id_artikel).let {
             if(it.isSuccessful){
@@ -32,6 +31,19 @@ class MasyarakatRepository @Inject constructor(
     suspend fun createArticle(judul: RequestBody, tanggal: RequestBody, isi: RequestBody, area: RequestBody, penulis: RequestBody, status: RequestBody, foto:
         MultipartBody.Part): Resource<DefaultResponse>{
         masyarakatService.createArticle(judul, tanggal, isi, area, penulis, status, foto).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun updateArticle(id_artikel: RequestBody, judul: RequestBody, tanggal: RequestBody, isi: RequestBody, area: RequestBody, penulis: RequestBody,
+                              status: RequestBody, foto:
+        MultipartBody.Part?): Resource<DefaultResponse>{
+        masyarakatService.updateArticle(id_artikel, judul, tanggal, isi, area, penulis, status, foto).let {
             if(it.isSuccessful){
                 it.body()?.let {
                     return Resource.Success(it)

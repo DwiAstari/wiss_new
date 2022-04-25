@@ -35,4 +35,19 @@ class IsiKegiatanViewModel @Inject constructor(
             }
         }
     }
+    
+    fun updateArticle(id_artikel: RequestBody, judul: RequestBody, tanggal: RequestBody, isi: RequestBody, area: RequestBody, penulis: RequestBody, status:
+    RequestBody, foto: MultipartBody.Part?){
+        viewModelScope.launch {
+            when(val response = repository.updateArticle(id_artikel, judul, tanggal, isi, area, penulis, status, foto)){
+                is Resource.Success -> {
+                    _message.value = response.data?.message
+                }
+                
+                is Resource.Error -> {
+                    _message.value = "error"
+                }
+            }
+        }
+    }
 }

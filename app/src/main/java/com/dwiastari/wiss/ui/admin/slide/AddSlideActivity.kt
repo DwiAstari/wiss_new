@@ -88,7 +88,7 @@ class AddSlideActivity : AppCompatActivity() {
                 Glide.with(this@AddSlideActivity)
                     .load(slides?.foto_slides)
                     .into(imgSlides)
-                spinnerStatus.setSelection(if(slides?.status == "Tampil") 0 else 1)
+                spinnerStatus.setText(if(slides?.status == "Tampil") listStatus[0] else listStatus[1])
                 
                 btnadd.setOnClickListener {
                     val judul = edtJudul.text.toString()

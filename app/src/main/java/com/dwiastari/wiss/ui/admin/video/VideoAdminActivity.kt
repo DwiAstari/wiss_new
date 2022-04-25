@@ -59,7 +59,6 @@ class VideoAdminActivity : AppCompatActivity() {
         
         binding.btnbackL.setOnClickListener { finish() }
     
-        showRecyclerList()
     }
     
     private fun showRecyclerList() {
@@ -72,5 +71,11 @@ class VideoAdminActivity : AppCompatActivity() {
                 adapter.setData(it)
             }
         }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+    
+        showRecyclerList()
     }
 }

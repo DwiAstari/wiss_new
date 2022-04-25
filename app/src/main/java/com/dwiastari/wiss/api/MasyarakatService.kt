@@ -26,6 +26,19 @@ interface MasyarakatService{
         @Part("status") status: RequestBody,
         @Part foto_kegiatan: MultipartBody.Part
     ): Response<DefaultResponse>
+    
+    @Multipart
+    @POST("artikel/update_artikel.php")
+    suspend fun updateArticle(
+        @Part("id_artikel") id_artikel: RequestBody,
+        @Part("judul_artikel") judul: RequestBody,
+        @Part("tanggal_artikel") tanggal_artikel: RequestBody,
+        @Part("isi_artikel") isi_artikel: RequestBody,
+        @Part("area") area: RequestBody,
+        @Part("penulis") penulis: RequestBody,
+        @Part("status") status: RequestBody,
+        @Part foto_kegiatan: MultipartBody.Part?
+    ): Response<DefaultResponse>
 
     @GET("layananharian/data_layanan.php")
     suspend fun getLayanan() : Response<LayananResponse>

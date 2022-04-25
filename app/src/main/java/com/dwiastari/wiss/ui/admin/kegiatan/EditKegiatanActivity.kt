@@ -1,13 +1,14 @@
 package com.dwiastari.wiss.ui.admin.kegiatan
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ActivityEditKegiatanBinding
@@ -19,6 +20,7 @@ class EditKegiatanActivity : AppCompatActivity() {
     
     companion object{
         const val ARTIKEL_EXTRA = "artikel"
+        var activity: Activity? = null
     }
     
     private lateinit var binding: ActivityEditKegiatanBinding
@@ -28,6 +30,8 @@ class EditKegiatanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditKegiatanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        activity = this
         
         val artikel = intent.extras?.getParcelable<Artikel>(ARTIKEL_EXTRA)
         

@@ -8,11 +8,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.dwiastari.wiss.databinding.ActivityIsiKegiatanAdminBinding
 import com.dwiastari.wiss.model.Artikel
 import com.dwiastari.wiss.ui.admin.kegiatan.EditKegiatanActivity.Companion.ARTIKEL_EXTRA
@@ -48,28 +51,52 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
         
         val artikel = intent.extras?.getParcelable<Artikel>(ARTIKEL_EXTRA)
         isEdit = artikel != null
-        if(isEdit){
-            with(binding){
+        
+        binding.apply{
+            if(isEdit){
                 tvJudul.text = "Edit Kegiatan"
                 edtJudul.setText(artikel?.judul_artikel)
                 edtTanggal.setText(artikel?.tanggal_artikel)
                 edtPenulis.setText(artikel?.penulis)
                 edtArea.setText(artikel?.area)
                 edtIsi.setText(artikel?.isi_artikel)
+    
+//                btnChoose.visibility = View.GONE
+    
+                Glide.with(this@IsiKegiatanAdminActivity)
+                    .load(artikel?.foto_kegiatan)
+                    .fitCenter()
+                    .into(inputfotokegiatan)
+                
             }
-        } else {
-            binding.btnadd.setOnClickListener {
+    
+            btnadd.setOnClickListener {
                 val judul = edtJudul.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val tanggal = edtTanggal.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val isi = edtIsi.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val penulis = edtPenulis.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val area = edtArea.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val status = "".toRequestBody("multipart/form-data".toMediaTypeOrNull())
-                val requestFoto = RequestBody.create("image/*".toMediaTypeOrNull(), inputStream!!.readBytes())
-                val foto = requestFoto?.let { it1 -> MultipartBody.Part.createFormData("foto_kegiatan", filename, it1) }
+                val id_artikel = artikel?.id_artikel!!.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
+                
+                if(inputStream != null){
+                    val requestFoto = RequestBody.create("image/*".toMediaTypeOrNull(), inputStream!!.readBytes())
+                    val foto = requestFoto.let { it1 -> MultipartBody.Part.createFormData("foto_kegiatan", filename, it1) }
     
-                if (foto != null) {
-                    viewModel.addArticle(judul, tanggal, isi, area, penulis, status, foto)
+                    loading.visibility = View.VISIBLE
+                    if(isEdit){
+                        viewModel.updateArticle(id_artikel, judul, tanggal, isi, area, penulis, status, foto)
+                    } else {
+                        viewModel.addArticle(judul, tanggal, isi, area, penulis, status, foto)
+                    }
+                } else {
+                    if(isEdit){
+                        val foto = null;
+                        loading.visibility = View.VISIBLE
+                        viewModel.updateArticle(id_artikel, judul, tanggal, isi, area, penulis, status, foto)
+                    } else {
+                        Toast.makeText(this@IsiKegiatanAdminActivity, "Foto belum dipilih", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
@@ -90,8 +117,12 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
     
         viewModel.message.observe(this){
             if(it != null){
+                loading.visibility = View.GONE
                 Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
                 if(it.contains("created")){
+                    finish()
+                } else if(it.contains("update")) {
+                    EditKegiatanActivity.activity?.finish()
                     finish()
                 }
             }
