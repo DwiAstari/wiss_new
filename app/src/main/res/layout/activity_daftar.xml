@@ -227,6 +227,6 @@
         tools:layout_editor_absoluteY="401dp"
         tools:ignore="MissingConstraints"
         android:foregroundGravity="center"
-        android:visibility="visible"/>
+        android:visibility="hide"/>
     
 </androidx.constraintlayout.widget.ConstraintLayout>

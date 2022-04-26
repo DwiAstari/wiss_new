@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.dwiastari.wiss.adapter.OnBoardingViewPagerAdapter
+import com.dwiastari.wiss.databinding.ActivityMainBinding
 import com.dwiastari.wiss.model.OnBoardingData
 import com.dwiastari.wiss.ui.admin.login.LoginActivity
 import com.google.android.material.tabs.TabLayout
@@ -14,21 +15,20 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         supportActionBar?.hide();
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         //inisialisasi button login
-        val mStartActBtn1 = findViewById<Button>(R.id.Masuk)
         //pemanggilan btn login
-        mStartActBtn1.setOnClickListener {
+        binding.Masuk.setOnClickListener {
             startActivity(Intent( this@MainActivity, LoginActivity::class.java))
         }
-        //insialisasi button daftar
-        val mStartActBtn = findViewById<Button>(R.id.Daftar)
         //pemanggilan btn daftar
-        mStartActBtn.setOnClickListener {
+        binding.Daftar.setOnClickListener {
             startActivity(Intent(this@MainActivity,DaftarActivity::class.java))
         }
 

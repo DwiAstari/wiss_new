@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dwiastari.wiss.DaftarActivity
 import com.dwiastari.wiss.MainActivity
 import com.dwiastari.wiss.api.RetrofitClient
 import com.dwiastari.wiss.databinding.ActivityLoginBinding
@@ -54,6 +55,10 @@ class LoginActivity : AppCompatActivity(){
                         getData()
                     }
                 }
+            }
+            
+            btnDaftar.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, DaftarActivity::class.java))
             }
         }
     }
