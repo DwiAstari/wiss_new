@@ -77,7 +77,6 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
                 val penulis = edtPenulis.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val area = edtArea.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 val status = "".toRequestBody("multipart/form-data".toMediaTypeOrNull())
-                val id_artikel = artikel?.id_artikel!!.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                 
                 if(inputStream != null){
                     val requestFoto = RequestBody.create("image/*".toMediaTypeOrNull(), inputStream!!.readBytes())
@@ -85,12 +84,14 @@ class IsiKegiatanAdminActivity : AppCompatActivity() {
     
                     loading.visibility = View.VISIBLE
                     if(isEdit){
+                        val id_artikel = artikel?.id_artikel!!.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                         viewModel.updateArticle(id_artikel, judul, tanggal, isi, area, penulis, status, foto)
                     } else {
                         viewModel.addArticle(judul, tanggal, isi, area, penulis, status, foto)
                     }
                 } else {
                     if(isEdit){
+                        val id_artikel = artikel?.id_artikel!!.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
                         val foto = null;
                         loading.visibility = View.VISIBLE
                         viewModel.updateArticle(id_artikel, judul, tanggal, isi, area, penulis, status, foto)
