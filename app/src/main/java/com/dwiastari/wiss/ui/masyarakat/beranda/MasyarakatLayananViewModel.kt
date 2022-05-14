@@ -1,4 +1,4 @@
-package com.dwiastari.wiss.ui.masyarakat.layanan
+package com.dwiastari.wiss.ui.masyarakat.beranda
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

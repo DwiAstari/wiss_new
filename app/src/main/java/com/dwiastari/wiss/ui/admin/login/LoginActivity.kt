@@ -1,6 +1,7 @@
 package com.dwiastari.wiss.ui.admin.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,6 +14,7 @@ import com.dwiastari.wiss.databinding.ActivityLoginBinding
 import com.dwiastari.wiss.model.ResponseLogin
 import com.dwiastari.wiss.ui.admin.DashboardAdminActivity
 import com.dwiastari.wiss.ui.masyarakat.DashboardActivity
+import com.dwiastari.wiss.utils.Constant
 import com.dwiastari.wiss.utils.EmptyTextWatcher
 import kotlinx.android.synthetic.main.activity_daftar.*
 import kotlinx.android.synthetic.main.activity_login.*
@@ -70,10 +72,13 @@ class LoginActivity : AppCompatActivity(){
         override fun onResponse(call: Call<ResponseLogin>, response : Response<ResponseLogin>){
             if (response.body()?.response == true){
                 binding.loading.visibility = View.GONE
-                if(response.body()?.payload?.type.equals("admin"))
+                if(response.body()?.payload?.type.equals("admin")) {
+                    response.body()?.payload?.type?.let { saveData(user, it) }
                     startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
-                else
+                }else {
                     startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                    response.body()?.payload?.type?.let { saveData(user, it) }
+                }
                 finish()
             }else{
                 binding.loading.visibility = View.GONE
@@ -91,6 +96,17 @@ class LoginActivity : AppCompatActivity(){
 
         })
 
+    }
+    
+    
+    
+    private fun saveData (username: String, type: String){
+        val preferences = getSharedPreferences(Constant.SHARED_PREF_NAME, MODE_PRIVATE)
+        val editor = preferences.edit()
+        
+        editor.putString(Constant.KEY_USERNAME, username)
+        editor.putString(Constant.KEY_TYPE, type)
+        editor.apply()
     }
 
 }

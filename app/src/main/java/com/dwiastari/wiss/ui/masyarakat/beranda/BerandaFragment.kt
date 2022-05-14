@@ -1,60 +1,72 @@
 package com.dwiastari.wiss.ui.masyarakat.beranda
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dwiastari.wiss.R
+import androidx.fragment.app.viewModels
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
+import com.denzcoskun.imageslider.models.SlideModel
+import com.dwiastari.wiss.databinding.FragmentBerandaBinding
+import com.dwiastari.wiss.model.Slide
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BerandaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class BerandaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentBerandaBinding
+    private val viewModel: BerandaViewModel by viewModels()
+    private val listSlide = arrayListOf<Slide>()
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beranda, container, false)
+        binding = FragmentBerandaBinding.inflate(inflater, container, false)
+        return binding.root
     }
     
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BerandaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BerandaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        viewModel.onLoad()
+        viewModel.listSlide.observe(requireActivity()){
+            listSlide.clear()
+            listSlide.addAll(it)
+            
+            val imageList = arrayListOf<SlideModel>()
+            
+            for(slide in listSlide){
+                imageList.add(SlideModel(slide.foto_slides))
             }
+            
+            binding.slider.apply {
+                setImageList(imageList)
+                setItemClickListener(object: ItemClickListener{
+                    override fun onItemSelected(position: Int) {
+                    
+                    }
+                })
+            }
+        }
+        
+        viewModel.kunjungan.observe(requireActivity()){
+            binding.jmlKunjungan.text = it.toString()
+        }
+        
+        viewModel.isLoading.observe(requireActivity()){
+            binding.loading.visibility = if (it) View.VISIBLE else View.GONE
+        }
+        
+        binding.apply {
+            btnInfo.setOnClickListener { requireActivity().startActivity(Intent(requireContext(), InformasiActivity::class.java)) }
+            btnKegiatan.setOnClickListener { requireActivity().startActivity(Intent(requireContext(), MasyarakatKegiatanActivity::class.java)) }
+            btnEbook.setOnClickListener { requireActivity().startActivity(Intent(requireContext(), EbookActivity::class.java)) }
+            btnVideo.setOnClickListener { requireActivity().startActivity(Intent(requireContext(), VideoActivity::class.java)) }
+        }
     }
+   
 }

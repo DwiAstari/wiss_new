@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.masyarakat.about.AboutFragment">
     
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/gedungpusyanra"
+            android:scaleType="fitXY"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Apa itu Pusyanra?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:justificationMode="inter_word"
+            android:text="Pusyanra adalah Pusat pelayanan keluarga sejahtera. Atau dikenal dengan PPKS. Pusyanra adalah Model Pelayanan terpadu yang mengedepankan motto pelayanan prima dan profesional dengan memperhatikan kebutuhan keluarga dan menjangkau semua rentang kehidupan manusia dari Balita,Remaja,sampai Lansia"
+            android:textColor="@color/black"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Apa saja layanan yang ada?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:justificationMode="inter_word"
+            android:text="Layanan Informasi Kependudukan dan KBLayanan Konseling Keluarga Balita dan AnakLayanan Keluarga Remaja da RemajaLayanan Konseling PranikahLayanan Konseling Keluarga HarmonisLayanan Konseling KB dan Kes. ReproduksiLayanan Konseling Keluarga Lansia dan LansiaPembinaan Usaha Ekonomi Keluarga"
+            android:textColor="@color/black"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Kapan Pusyanra bekerja?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:justificationMode="inter_word"
+            android:textColor="@color/black"
+            android:text="Pusyanra buka setiapa hari senin hingga jumat pada jam kerja 08.00 - 16.00. namun juga melayani konseling melalui daring. Baik WA, SMS, HOTLINE SERVICE maupun sosmed lainnya."/>
 
-</FrameLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -7,7 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiastari.wiss.databinding.ActivityListKegiatanAdminBinding
-import com.dwiastari.wiss.ui.admin.ListKegiatanAdminAdapter
+import com.dwiastari.wiss.adapter.ListKegiatanAdminAdapter
 import com.dwiastari.wiss.ui.masyarakat.artikel.MasyarakatArtikelViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

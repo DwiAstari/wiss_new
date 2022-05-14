@@ -1,60 +1,104 @@
 package com.dwiastari.wiss.ui.masyarakat.profile
 
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dwiastari.wiss.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.dwiastari.wiss.MainActivity
+import com.dwiastari.wiss.databinding.FragmentProfileBinding
+import com.dwiastari.wiss.utils.Constant
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var binding: FragmentProfileBinding
+    private lateinit var preferences: SharedPreferences
+    private val viewModel: ProfileViewModel by viewModels()
+    
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    
+        preferences = requireContext().getSharedPreferences(Constant.SHARED_PREF_NAME, MODE_PRIVATE)
+        val username = preferences.getString(Constant.KEY_USERNAME, "")
+        val type = preferences.getString(Constant.KEY_TYPE, "")
+        viewModel.onLoad(username!!, type!!)
+        getProfile()
+        
+        binding.apply {
+            btnLogout.setOnClickListener {
+                logout()
+            }
+            
+            btnEditProfile.setOnClickListener {
+                startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+            }
+            
+            btnChangePassword.setOnClickListener { startActivity(Intent(requireContext(), EditPasswordActivity::class.java)) }
+            
         }
     }
     
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
-    
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun getProfile() {
+        viewModel.apply {
+            loading.observe(requireActivity()){
+                binding.loading.visibility = if(it) View.VISIBLE else View.GONE
+            }
+            
+            masyarakat.observe(requireActivity()){
+                if(it != null){
+                    binding.apply {
+                        if (it.foto.isNotEmpty()){
+                            Glide.with(requireContext())
+                                .load(it.foto)
+                                .into(ivProfil)
+                        }
+                        
+                        tvName.text = it.nama_masyarakat
+                        tvDetail.text = it.domisili
+                    }
                 }
             }
+           
+            konselor.observe(requireActivity()){
+                if(it != null){
+                    binding.apply {
+                        if (it.foto.isNotEmpty()){
+                            Glide.with(requireContext())
+                                .load(it.foto)
+                                .into(ivProfil)
+                        }
+            
+                        tvName.text = it.nama_akun
+                        tvDetail.text = it.bidang_konselor
+                    }
+                }
+            }
+        }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        getProfile()
+    }
+    
+    private fun logout(){
+        val editor = preferences.edit()
+        editor.clear()
+        editor.apply()
+        
+        requireActivity().finish()
+        startActivity(Intent(requireContext(), MainActivity::class.java))
     }
 }

@@ -82,6 +82,15 @@ class MasyarakatRepository @Inject constructor(
         }
     }
     
+    suspend fun getActiveSlide() : Resource<SlideResponse>{
+        masyarakatService.getActiveSlide().let {
+            if (it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
     suspend fun updateSlide(id_slide: String, judul_slide: String, status_slide: String): Resource<DefaultResponse>{
         masyarakatService.updateSlides(id_slide, judul_slide, status_slide).let {
             if(it.isSuccessful){
@@ -180,6 +189,97 @@ class MasyarakatRepository @Inject constructor(
         masyarakatService.updateEbook(id, judul, link).let {
             if(it.isSuccessful){
                 it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getKunjungan(): Resource<UserCountResponse>{
+        masyarakatService.getKunjungan().let {
+            if(it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getMasyarakat(username: String): Resource<MasyarakatResponse>{
+        masyarakatService.getMasyarakatById(username).let {
+            if(it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getAkunKonselor(username: String): Resource<AkunKonselorResponse>{
+        masyarakatService.getKonselorById(username).let {
+            if(it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun deleteToken(username: String, token: String): Resource<DefaultResponse>{
+        masyarakatService.deleteToken(username, token).let {
+            if(it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getKonselor() : Resource<KonselorResponse>{
+        masyarakatService.getKonselor().let {
+            if (it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun updateKonselor(username: RequestBody, nama: RequestBody, bidang: RequestBody, foto: MultipartBody.Part?): Resource<DefaultResponse>{
+        masyarakatService.updateKonselor(username, nama, bidang, foto).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun updateMasyarakat(username: RequestBody, nama: RequestBody, umur: RequestBody, hp: RequestBody, domisili: RequestBody,  foto: MultipartBody
+    .Part?):
+            Resource<DefaultResponse>{
+        masyarakatService.updateMasyarakat(username, nama, umur, hp, domisili, foto).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun changePasswordKonselor(username: String, oldPassword: String, newPassword: String): Resource<DefaultResponse>{
+        masyarakatService.changePasswordKonselor(username, oldPassword, newPassword).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun changePasswordMasyarakat(username: String, oldPassword: String, newPassword: String): Resource<DefaultResponse>{
+        masyarakatService.changePasswordMasyarakat(username, oldPassword, newPassword).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
             }
             return Resource.Error(it.message())
         }

@@ -53,6 +53,9 @@ interface MasyarakatService{
     @GET("slides/data_slides.php")
     suspend fun getSlide() : Response<SlideResponse>
     
+    @GET("slides/active_slides.php")
+    suspend fun getActiveSlide() : Response<SlideResponse>
+    
     @Multipart
     @POST("slides/create_slides.php")
     suspend fun createSlides(
@@ -70,7 +73,7 @@ interface MasyarakatService{
     ): Response<DefaultResponse>
     
     @FormUrlEncoded
-    @POST("artikel/delete_slides.php")
+    @POST("slides/delete_slides.php")
     suspend fun deleteSlides(@Field("id_slide") id_slide: String) : Response<DefaultResponse>
     
     @GET("video/data_video.php")
@@ -134,8 +137,76 @@ interface MasyarakatService{
         @Field("hp") phone: String,
         @Field("umur") age: String,
         @Field("domisili") address: String,
-        ): Call<RegisterResponse>
+        ): Call<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("masyarakat/masyarakat_by_id.php")
+    suspend fun getMasyarakatById(
+        @Field("username") username: String
+    ): Response<MasyarakatResponse>
+    
+    @FormUrlEncoded
+    @POST("akun_konselor/konselor_by_id.php")
+    suspend fun getKonselorById(
+        @Field("username") username: String
+    ): Response<AkunKonselorResponse>
     
     @GET("loginuser/usercount.php")
     fun getUserCount(): Call<UserCountResponse>
+    
+    @GET("loginuser/usercount.php")
+    suspend fun getKunjungan(): Response<UserCountResponse>
+    
+    @GET("akun_konselor/data_akun.php")
+    suspend fun getKonselor(): Response<KonselorResponse>
+    
+    @FormUrlEncoded
+    @POST("loginuser/add_token.php")
+    fun addToken(
+        @Field("username") username: String,
+        @Field("token") token: String
+    ): Call<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("loginuser/delete_token.php")
+    suspend fun deleteToken(
+        @Field("username") username: String,
+        @Field("token") token: String
+    ): Response<DefaultResponse>
+    
+    @Multipart
+    @POST("akun_konselor/update_akun.php")
+    suspend fun updateKonselor(
+        @Part("username") username: RequestBody,
+        @Part("nama") nama: RequestBody,
+        @Part("bidang") bidang: RequestBody,
+        @Part foto: MultipartBody.Part?
+    ): Response<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("akun_konselor/change_password.php")
+    suspend fun changePasswordKonselor(
+        @Field("username") username: String,
+        @Field("old_password") oldPassword: String,
+        @Field("new_password") newPassword: String
+    ): Response<DefaultResponse>
+    
+    @Multipart
+    @POST("masyarakat/update_masyarakat.php")
+    suspend fun updateMasyarakat(
+        @Part("username") username: RequestBody,
+        @Part("nama") nama: RequestBody,
+        @Part("umur") umur: RequestBody,
+        @Part("hp") hp: RequestBody,
+        @Part("domisili") domisili: RequestBody,
+        @Part foto: MultipartBody.Part?
+    ): Response<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("masyarakat/change_password.php")
+    suspend fun changePasswordMasyarakat(
+        @Field("username") username: String,
+        @Field("old_password") oldPassword: String,
+        @Field("new_password") newPassword: String
+    ): Response<DefaultResponse>
 }

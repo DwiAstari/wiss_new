@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import com.dwiastari.wiss.api.RetrofitClient
 import com.dwiastari.wiss.databinding.ActivityDaftarBinding
+import com.dwiastari.wiss.model.DefaultResponse
 import com.dwiastari.wiss.model.RegisterResponse
 import com.dwiastari.wiss.ui.masyarakat.artikel.MasyarakatArtikelViewModel
 import com.dwiastari.wiss.utils.EmptyTextWatcher
@@ -74,17 +75,20 @@ class DaftarActivity : AppCompatActivity() {
         val api = RetrofitClient().getInstance()
         binding.loading.visibility = View.VISIBLE
         
-        api.registerUser(username, password, nama, email, phone, age, address).enqueue(object: Callback<RegisterResponse>{
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+        api.registerUser(username, password, nama, email, phone, age, address).enqueue(object: Callback<DefaultResponse>{
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                 binding.loading.visibility = View.GONE
                 if(response.isSuccessful){
-                
+                    Toast.makeText(applicationContext, response.body()!!.message, Toast.LENGTH_SHORT).show()
+                    if(response.body()?.message!!.contains("Berhasil")){
+                        finish()
+                    }
                 } else {
                     Toast.makeText(this@DaftarActivity, "Gagal Daftar, Silahkan coba kembali", Toast.LENGTH_SHORT).show()
                 }
             }
     
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                 binding.loading.visibility = View.GONE
                 Toast.makeText(this@DaftarActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
             }

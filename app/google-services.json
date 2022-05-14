@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "222488245210",
+    "firebase_url": "https://wiss-keluargaku-default-rtdb.firebaseio.com",
+    "project_id": "wiss-keluargaku",
+    "storage_bucket": "wiss-keluargaku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222488245210:android:227d44ad24c6cc38cb06e3",
+        "android_client_info": {
+          "package_name": "com.dwiastari.wiss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222488245210-ujt5hthft8soiqs1589ps5t06s41uvp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAncqyrrfmSIB2RtqG4Ixa0ZlZlPsKqh18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222488245210-ujt5hthft8soiqs1589ps5t06s41uvp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

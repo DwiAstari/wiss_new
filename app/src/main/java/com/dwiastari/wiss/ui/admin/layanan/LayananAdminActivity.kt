@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiastari.wiss.adapter.ListLayananAdminAdapter
 import com.dwiastari.wiss.databinding.ActivityListLayananAdminBinding
-import com.dwiastari.wiss.ui.masyarakat.layanan.MasyarakatLayananViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
