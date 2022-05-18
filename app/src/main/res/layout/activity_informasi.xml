@@ -88,7 +88,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_grey"
-            tools:listitem="@layout/item_informasi"/>
+            tools:listitem="@layout/item_informasi"
+            tools:itemCount="5"/>
+    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Informasi Layanan"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+    
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/primary"/>
+        
+        <TextView
+            android:id="@+id/tv_bkkbn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Klik untuk melihat layanan data yang ada"
+            android:textColor="@android:color/holo_blue_dark"
+            android:clickable="true"
+            android:focusable="true"/>
+            
+            
+        
     </LinearLayout>
     
     

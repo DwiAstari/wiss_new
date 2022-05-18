@@ -47,11 +47,7 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }, 3000)
         }
-
-        
-
     }
-    
     
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because

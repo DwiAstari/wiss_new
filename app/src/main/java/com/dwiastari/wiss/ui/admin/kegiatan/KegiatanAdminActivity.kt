@@ -27,8 +27,6 @@ class KegiatanAdminActivity : AppCompatActivity() {
         binding.btnbackL.setOnClickListener { finish() }
         
         binding.btnAddArticle.setOnClickListener { startActivity(Intent(this, IsiKegiatanAdminActivity::class.java)) }
-        
-        
     }
 
     private fun showRecyclerList() {
@@ -36,6 +34,7 @@ class KegiatanAdminActivity : AppCompatActivity() {
         binding.rvList.adapter = adapter
 
         binding.loading.visibility = View.VISIBLE
+        
         masyarakatArtikelViewModel.onLoad()
         masyarakatArtikelViewModel.listArticle.observe(this) {
             if (it != null) {

@@ -10,6 +10,7 @@ import javax.inject.Inject
 class MasyarakatRepository @Inject constructor(
     private val masyarakatService: MasyarakatService
 ) {
+    
     suspend fun getArticle() : Resource<ArtikelResponse>{
         masyarakatService.getArticle().let {
             if (it.isSuccessful){

@@ -67,39 +67,44 @@ class LoginActivity : AppCompatActivity(){
 
     private fun getData () {
         val api = RetrofitClient().getInstance()
+        
         api.loginUser(user,pass).enqueue(object : Callback<ResponseLogin>{
-
-        override fun onResponse(call: Call<ResponseLogin>, response : Response<ResponseLogin>){
-            if (response.body()?.response == true){
-                binding.loading.visibility = View.GONE
-                if(response.body()?.payload?.type.equals("admin")) {
-                    response.body()?.payload?.type?.let { saveData(user, it) }
-                    startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
-                }else {
-                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-                    response.body()?.payload?.type?.let { saveData(user, it) }
+            
+            override fun onResponse(call: Call<ResponseLogin>, response : Response<ResponseLogin>){
+                if (response.body()?.response == true){
+                    binding.loading.visibility = View.GONE
+                    if(response.body()?.payload?.type.equals("admin")) {
+                        response.body()?.payload?.type?.let {
+                            saveData(user, it)
+                        }
+                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+                    }else {
+                        startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                        response.body()?.payload?.type?.let {
+                            saveData(user, it)
+                        }
+                    }
+                    finish()
+                }else{
+                    binding.loading.visibility = View.GONE
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "login gagal, periksa lagi username dan password",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-                finish()
-            }else{
-                binding.loading.visibility = View.GONE
-                Toast.makeText(
-                    this@LoginActivity,
-                    "login gagal, periksa lagi username dan password",
-                    Toast.LENGTH_LONG
-                ).show()
             }
-        }
 
             override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                 Log.e("pesan error", "${t.message}")
             }
 
         })
+        
 
     }
     
-    
-    
+    // Menyimpan data login di shared preferences agar tidak perlu login ulang
     private fun saveData (username: String, type: String){
         val preferences = getSharedPreferences(Constant.SHARED_PREF_NAME, MODE_PRIVATE)
         val editor = preferences.edit()

@@ -48,7 +48,6 @@ class DashboardAdminActivity : AppCompatActivity() {
             cardBook.setOnClickListener {
                 startActivity(Intent(this@DashboardAdminActivity, EbookAdminActivity::class.java))
             }
-            
             cardKeluar.setOnClickListener {
                 logout()
             }
