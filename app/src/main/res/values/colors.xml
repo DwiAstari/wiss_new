@@ -27,6 +27,7 @@
     <color name="textPrimaryVariant">#2D2B37</color>
     <color name="primaryPetugas">#FF7000</color>
     <color name="secondaryPetugas">#47B782</color>
+    <color name="chat1">#9ECCFF</color>
 
     <color name="textGrey">#868A8F</color>
     <color name="header">#ffc736</color>

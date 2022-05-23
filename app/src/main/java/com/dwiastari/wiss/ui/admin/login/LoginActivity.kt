@@ -73,17 +73,28 @@ class LoginActivity : AppCompatActivity(){
             override fun onResponse(call: Call<ResponseLogin>, response : Response<ResponseLogin>){
                 if (response.body()?.response == true){
                     binding.loading.visibility = View.GONE
-                    if(response.body()?.payload?.type.equals("admin")) {
-                        response.body()?.payload?.type?.let {
-                            saveData(user, it)
-                        }
-                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
-                    }else {
-                        startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-                        response.body()?.payload?.type?.let {
-                            saveData(user, it)
+                    response.body()?.payload?.let {
+                        saveData(user, it.type, it.nama_user)
+                        
+                        if(it.type == "admin"){
+                            startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+                        } else {
+                            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
                         }
                     }
+//                        if(it.type == "admin"){
+//                    }
+//                    if(response.body()?.payload?.type.equals("admin")) {
+//                        response.body()?.payload?.type?.let {
+//                            saveData(user, it, )
+//                        }
+//                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+//                    }else {
+//                        startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+//                        response.body()?.payload?.type?.let {
+//                            saveData(user, it)
+//                        }
+//                    }
                     finish()
                 }else{
                     binding.loading.visibility = View.GONE
@@ -105,7 +116,7 @@ class LoginActivity : AppCompatActivity(){
     }
     
     // Menyimpan data login di shared preferences agar tidak perlu login ulang
-    private fun saveData (username: String, type: String){
+    private fun saveData (username: String, type: String, nama: String){
         val preferences = getSharedPreferences(Constant.SHARED_PREF_NAME, MODE_PRIVATE)
         val editor = preferences.edit()
         

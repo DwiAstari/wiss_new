@@ -42,7 +42,7 @@ class InformasiActivity : AppCompatActivity() {
             startActivity(intent)
         }
         
-        binding.tvBkkbn.setOnClickListener {  }
+//        binding.tvBkkbn.setOnClickListener {  }
         adapter = LayananMasyarakatAdapter()
         binding.rvLayanan.setHasFixedSize(true)
         showRecyclerList()
