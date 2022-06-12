@@ -174,6 +174,21 @@ interface MasyarakatService{
         @Field("token") token: String
     ): Response<DefaultResponse>
     
+    @FormUrlEncoded
+    @POST("loginuser/get_token.php")
+    fun getToken(
+        @Field("username") username: String
+    ): Call<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("loginuser/send_message.php")
+    fun sendMessage(
+        @Field("sender") sender: String,
+        @Field("to") to: String,
+        @Field("message") message: String,
+        @Field("title") title: String
+    ): Call<SendNotificationResponse>
+    
     @Multipart
     @POST("akun_konselor/update_akun.php")
     suspend fun updateKonselor(

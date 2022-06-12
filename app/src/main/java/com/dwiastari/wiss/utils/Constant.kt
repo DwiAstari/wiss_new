@@ -5,4 +5,5 @@ object Constant {
     const val SHARED_PREF_NAME = "wiss"
     const val KEY_USERNAME = "username"
     const val KEY_TYPE = "type"
+    const val KEY_NAME = "name"
 }

@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.dwiastari.wiss.ui.masyarakat.DashboardActivity
 import com.dwiastari.wiss.ui.masyarakat.pesan.ChatActivity
+import com.dwiastari.wiss.ui.masyarakat.pesan.PesanFragment
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -18,7 +20,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     }
     
     fun scheduleNotification(title: String, message: String){
-        val intent = Intent(this, ChatActivity::class.java).apply {
+        val intent = Intent(this, DashboardActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 //            putExtra()
         }
@@ -32,7 +34,6 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
             // Set the intent that will fire when the user taps the notification
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
-        
         
     
         with(NotificationManagerCompat.from(this)) {

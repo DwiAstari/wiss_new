@@ -122,6 +122,7 @@ class LoginActivity : AppCompatActivity(){
         
         editor.putString(Constant.KEY_USERNAME, username)
         editor.putString(Constant.KEY_TYPE, type)
+        editor.putString(Constant.KEY_NAME, nama)
         editor.apply()
     }
 
