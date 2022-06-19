@@ -37,9 +37,11 @@
         <entry key="..\:/wiss_new/app/src/main/res/drawable/selected.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/shape.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/unselected.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/activity_add_ebook.xml" value="0.12708333333333333" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_daftar.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_faqactivity.xml" value="0.25" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/activity_informasi.xml" value="0.15416666666666667" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_isi_kegiatan_admin.xml" value="0.1" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_kegiatan_admin.xml" value="0.2" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_layanan_admin.xml" value="0.2359375" />
@@ -59,6 +61,8 @@
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_video.xml" value="0.16979166666666667" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/onboarding_screen_layout.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/slide_walktrough.xml" value="0.1" />
+        <entry key="..\:/wiss_new/app/src/main/res/menu/menu.xml" value="0.12708333333333333" />
+        <entry key="..\:/wiss_new/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
         <entry key="app/src/main/res/layout/activity_kegiatan_admin.xml" value="0.178125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.32653985507246375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23125" />

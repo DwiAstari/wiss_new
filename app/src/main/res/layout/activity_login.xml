@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="50dp"
-            android:text="Ayo Masuk."
+            android:text="Ayo Masuk.."
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="22sp"/>
@@ -50,19 +50,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="50dp"
-            android:text="Selamat Datang Kembali."
+            android:text="Selamat Datang Kembali"
             android:textSize="22sp"
             android:textColor="@color/black"/>
-    
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="50dp"
-            android:text="Kamu Sudah Masuk!"
-            android:textColor="@color/black"
-            android:textSize="22sp"/>
+
     </LinearLayout>
 
     <TextView
