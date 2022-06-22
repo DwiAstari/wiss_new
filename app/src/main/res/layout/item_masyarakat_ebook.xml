@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.7"
         android:layout_gravity="center_vertical"
-        tools:text="1. Testasberkasbrbsabrbakssa1"
+        tools:text="1. Testasberkasbkkbnberkassa1"
         android:textColor="@color/black"
         android:textSize="18sp"/>
     

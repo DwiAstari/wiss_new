@@ -16,7 +16,7 @@ android {
         applicationId "com.dwiastari.wiss"
         minSdk 21
         targetSdk 30
-        versionCode 3
+        versionCode 1
         versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
