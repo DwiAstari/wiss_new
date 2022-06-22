@@ -12,8 +12,7 @@ import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemMasyarakatEbookBinding
 import com.dwiastari.wiss.model.Ebook
 
-class ListMasyarakatEbookAdapter :
-    RecyclerView.Adapter<ListMasyarakatEbookAdapter.ListViewHolder>() {
+class ListMasyarakatEbookAdapter : RecyclerView.Adapter<ListMasyarakatEbookAdapter.ListViewHolder>() {
     private val mData = ArrayList<Ebook>()
     
     fun setData(items: ArrayList<Ebook>) {
@@ -51,7 +50,7 @@ class ListMasyarakatEbookAdapter :
     }
     
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(mData[position], position)
+        holder.bind(mData[position], position + 1)
     }
     
     override fun getItemCount(): Int {
