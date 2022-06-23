@@ -55,7 +55,7 @@ class ListMasyarakatVideoAdapter :
     }
     
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(mData[position], position)
+        holder.bind(mData[position], position + 1)
     }
     
     override fun getItemCount(): Int {

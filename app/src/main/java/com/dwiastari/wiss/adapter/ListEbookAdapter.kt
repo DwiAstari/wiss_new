@@ -55,7 +55,7 @@ class ListEbookAdapter :
     }
     
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(mData[position], position)
+        holder.bind(mData[position], position + 1)
         holder.itemView.apply {
             setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW)
