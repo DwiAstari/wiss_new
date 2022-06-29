@@ -56,9 +56,14 @@
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_video.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_video_admin.xml" value="0.12132725430597771" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_walk_trough.xml" value="0.1" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/fragment_beranda.xml" value="0.146875" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/fragment_pesan.xml" value="0.146875" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_artikel.xml" value="0.176" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/item_informasi.xml" value="0.146875" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_layanan.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_masyarakat_ebook.xml" value="0.12708333333333333" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/item_masyarakat_kegiatan.xml" value="0.146875" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/item_pesan.xml" value="0.146875" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_slide.xml" value="0.12132725430597771" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_video.xml" value="0.16979166666666667" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/onboarding_screen_layout.xml" value="0.25" />
