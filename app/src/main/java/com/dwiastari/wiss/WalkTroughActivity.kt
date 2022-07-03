@@ -31,7 +31,7 @@ class WalkTroughActivity : AppCompatActivity() {
 
         initAction()
 
-        //menambahkan list data yang akan ditampilkan
+        //list data yang ditampilkan
         val onBoardingData:MutableList<OnBoardingData> = ArrayList()
         onBoardingData.add(OnBoardingData("Konseling Pranikah","Layanan Konseling Pranikah",R.drawable.nikah))
         onBoardingData.add(OnBoardingData("Konseling Anak","Layanan Konseling Keluarga Balita dan Anak",R.drawable.anak))
@@ -41,11 +41,11 @@ class WalkTroughActivity : AppCompatActivity() {
         onBoardingData.add(OnBoardingData("Ekonomi Keluarga","Layanan Pembinaan Usaha Ekonomi Keluarga",R.drawable.ekonomi))
         onBoardingData.add(OnBoardingData("Informasi Kependudukan","Layanan Informasi Kependudukan dan KB",R.drawable.kb))
 
-        //menampilkan semua data secara berurut
+        //data ditampilkan berurut
         setOnBoardingViewPagerAdapter(onBoardingData)
 
     }
-    //set list data agar dapat terbaca pada adapternya
+    //set list data supaya dapat terbaca pada adapternya
     private fun setOnBoardingViewPagerAdapter(onBoardingData: List<OnBoardingData>){
         onBoardingViewPager = findViewById(R.id.screenPager);
         onBoardingViewPagerAdapter = OnBoardingViewPagerAdapter(this, onBoardingData)

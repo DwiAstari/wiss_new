@@ -34,7 +34,7 @@ class ListSlideAdminAdapter :
         private val binding = ItemSlideBinding.bind(itemView)
         fun bind(items: Slide, position: Int) {
             with(itemView) {
-                binding.tvJudul.text = "$position. ${items.judul_slide}"
+                binding.tvJudul.text = "$position . ${items.judul_slide}"
                 binding.imgSlides.loadImage(items.foto_slides)
             }
         }

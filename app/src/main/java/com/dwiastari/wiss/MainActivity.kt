@@ -2,14 +2,9 @@ package com.dwiastari.wiss
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
-import com.dwiastari.wiss.adapter.OnBoardingViewPagerAdapter
 import com.dwiastari.wiss.databinding.ActivityMainBinding
-import com.dwiastari.wiss.model.OnBoardingData
 import com.dwiastari.wiss.ui.admin.login.LoginActivity
-import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

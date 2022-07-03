@@ -12,8 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditKegiatanViewModel @Inject constructor(
-    var repository: MasyarakatRepository
-): ViewModel() {
+    var repository: MasyarakatRepository): ViewModel() {
     
     val _message = MutableLiveData<String>()
     val message: LiveData<String>

@@ -48,7 +48,8 @@ class SplashActivity : AppCompatActivity() {
             }, 3000)
         }
     }
-    
+
+    //notifikasi channel untuk android
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library

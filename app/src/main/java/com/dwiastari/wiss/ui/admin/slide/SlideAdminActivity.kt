@@ -45,7 +45,6 @@ class SlideAdminActivity : AppCompatActivity() {
     
     override fun onResume() {
         super.onResume()
-    
         showRecyclerList()
     }
 }

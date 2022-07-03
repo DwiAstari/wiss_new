@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EditKegiatanActivity : AppCompatActivity() {
-    
     companion object{
         const val ARTIKEL_EXTRA = "artikel"
         var activity: Activity? = null
@@ -80,7 +79,6 @@ class EditKegiatanActivity : AppCompatActivity() {
                 }
             }
         }
-        
-//        Toast.makeText(this, artikel?.judul_artikel, Toast.LENGTH_SHORT).show()
+
     }
 }

@@ -51,18 +51,7 @@ class AddSlideActivity : AppCompatActivity() {
         
         val slides = intent.extras?.getParcelable<Slide>(DetailSlideAdminActivity.EXTRA_SLIDE)
         isEdit = slides != null
-        
-        viewModel.apply {
-            loading.observe(this@AddSlideActivity){
-                binding.loading.visibility = if(it) View.VISIBLE else View.GONE
-            }
-            
-            response.observe(this@AddSlideActivity){
-                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
-                if(it.message != "Error")
-                    finish()
-            }
-        }
+
         
         binding.apply {
             btnbackL.setOnClickListener { finish() }
@@ -99,8 +88,10 @@ class AddSlideActivity : AppCompatActivity() {
                         Toast.makeText(this@AddSlideActivity, "Periksa kembali inputan anda", Toast.LENGTH_SHORT).show()
                     } else {
                         viewModel.updateSlide(slides!!.id_slide, judul, status)
+
                     }
                 }
+
             } else {
                 btnadd.setOnClickListener {
                     val judul = edtJudul.text.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull())
@@ -114,7 +105,19 @@ class AddSlideActivity : AppCompatActivity() {
                 }
             }
         }
+        viewModel.apply {
+            loading.observe(this@AddSlideActivity){
+                binding.loading.visibility = if(it) View.VISIBLE else View.GONE
+            }
+
+            response.observe(this@AddSlideActivity){
+                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
+                if(it.message != "Error")
+                    finish()
+            }
+        }
     }
+
     
     fun hasPermissions(context: Context?, vararg permissions: String?): Boolean {
         if (context != null) {
