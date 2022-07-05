@@ -16,8 +16,6 @@ class DetailSlideViewModel @Inject constructor(
     val repository: MasyarakatRepository
 ): ViewModel() {
 
-//    DESIGN PATTTERN => MVVM = (Model-View-View Model)
-//                    => MVP = (Model-View-Presenter)
     
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
