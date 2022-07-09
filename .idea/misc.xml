@@ -43,6 +43,7 @@
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_chat.xml" value="0.15307971014492755" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_daftar.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/activity_dashboard_admin.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_detail_slide_admin.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_ebook.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_ebook_admin.xml" value="0.25" />
@@ -71,6 +72,7 @@
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_artikel.xml" value="0.176" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_chat_receive.xml" value="0.14990942028985507" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_chat_sent.xml" value="0.25" />
+        <entry key="..\:/wiss_new/app/src/main/res/layout/item_dropdown_role.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_informasi.xml" value="0.146875" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_layanan.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_masyarakat_ebook.xml" value="0.12708333333333333" />

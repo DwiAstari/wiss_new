@@ -6,7 +6,7 @@
         android:icon="@drawable/selector_beranda"/>
     <item android:id="@+id/item_pesan"
         android:title="Pesan"
-        android:icon="@drawable/selector_pesan"/>
+        android:icon="@drawable/ic_chat"/>
     <item android:id="@+id/item_about"
         android:title="About"
         android:icon="@drawable/selector_about"/>
