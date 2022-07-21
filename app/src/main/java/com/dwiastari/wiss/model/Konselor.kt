@@ -1,5 +1,9 @@
 package com.dwiastari.wiss.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Konselor(
     val id_akun: String,
     val nama_akun: String,
@@ -8,4 +12,4 @@ data class Konselor(
     val username: String,
     val foto: String
 
-    )
+    ): Parcelable

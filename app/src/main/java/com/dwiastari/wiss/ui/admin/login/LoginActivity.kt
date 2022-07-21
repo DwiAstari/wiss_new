@@ -76,10 +76,10 @@ class LoginActivity : AppCompatActivity(){
                     response.body()?.payload?.let {
                         saveData(user, it.type, it.nama_user)
                         
-                        if(it.type == "admin"){
-                            startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
-                        } else {
+                        if(it.type == "masyarakat" || it.type == "konselor" ){
                             startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                        } else {
+                            startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
                         }
                     }
 //                        if(it.type == "admin"){

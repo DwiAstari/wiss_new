@@ -11,21 +11,39 @@ import com.bumptech.glide.Glide
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemVideoBinding
 import com.dwiastari.wiss.model.Ebook
+import com.dwiastari.wiss.model.Konselor
 import com.dwiastari.wiss.model.Video
 
 class ListEbookAdapter :
     RecyclerView.Adapter<ListEbookAdapter.ListViewHolder>() {
     private val mData = ArrayList<Ebook>()
+    private val mDataCopy = arrayListOf<Ebook>()
     private lateinit var itemListener: ItemListener
     
     fun setData(items: ArrayList<Ebook>) {
         mData.clear()
         mData.addAll(items)
+        mDataCopy.clear()
+        mDataCopy.addAll(items)
         notifyDataSetChanged()
     }
     
     fun setListener(itemListener: ItemListener){
         this.itemListener = itemListener
+    }
+    
+    fun filterData(text: String){
+        mData.clear()
+        if(text.isEmpty()){
+            mData.addAll(mDataCopy)
+        } else {
+            for(ebook in mDataCopy){
+                if(ebook.judul_ebook.lowercase().contains(text.lowercase())){
+                    mData.add(ebook)
+                }
+            }
+        }
+        notifyDataSetChanged()
     }
     
     fun ImageView.loadImage(url: String?) {

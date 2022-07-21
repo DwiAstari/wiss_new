@@ -240,6 +240,18 @@ class MasyarakatRepository @Inject constructor(
         }
     }
     
+    suspend fun createKonselor(username: RequestBody, nama: RequestBody, bidang: RequestBody, password: RequestBody, foto: MultipartBody.Part?):
+            Resource<DefaultResponse>{
+        masyarakatService.createKonselor(username, password, nama, bidang, foto).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
     suspend fun updateKonselor(username: RequestBody, nama: RequestBody, bidang: RequestBody, foto: MultipartBody.Part?): Resource<DefaultResponse>{
         masyarakatService.updateKonselor(username, nama, bidang, foto).let {
             if(it.isSuccessful){
@@ -277,6 +289,17 @@ class MasyarakatRepository @Inject constructor(
     
     suspend fun changePasswordMasyarakat(username: String, oldPassword: String, newPassword: String): Resource<DefaultResponse>{
         masyarakatService.changePasswordMasyarakat(username, oldPassword, newPassword).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun changePasswordAdmin(username: String, oldPassword: String, newPassword: String): Resource<DefaultResponse>{
+        masyarakatService.changePasswordAdmin(username, oldPassword, newPassword).let {
             if(it.isSuccessful){
                 it.body()?.let {
                     return Resource.Success(it)

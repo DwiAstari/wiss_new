@@ -28,10 +28,10 @@ class SplashActivity : AppCompatActivity() {
         if(!preferences.getString(Constant.KEY_USERNAME, "").isNullOrEmpty()){
             val type = preferences.getString(Constant.KEY_TYPE, "")
             type?.let {
-                if(it == "admin"){
-                    startActivity(Intent(this, DashboardAdminActivity::class.java))
-                } else {
+                if(it == "konselor" || it == "masyarakat"){
                     startActivity(Intent(this, DashboardActivity::class.java))
+                } else {
+                    startActivity(Intent(this,DashboardAdminActivity::class.java))
                 }
             }
         } else {

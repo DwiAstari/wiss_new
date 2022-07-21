@@ -2,6 +2,8 @@ package com.dwiastari.wiss.ui.admin.layanan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dwiastari.wiss.adapter.ListLayananAdminAdapter
@@ -21,6 +23,20 @@ class LayananAdminActivity : AppCompatActivity() {
         adapter = ListLayananAdminAdapter()
         binding.rvLayanan.setHasFixedSize(true)
         binding.btnbackL.setOnClickListener { finish() }
+        binding.etCari.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            
+            }
+        
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            
+            }
+        
+            override fun afterTextChanged(s: Editable?) {
+                adapter.filterData(s.toString())
+            }
+        
+        })
 
     }
     

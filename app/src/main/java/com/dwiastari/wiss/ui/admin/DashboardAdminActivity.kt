@@ -3,6 +3,7 @@ package com.dwiastari.wiss.ui.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.dwiastari.wiss.MainActivity
 import com.dwiastari.wiss.api.RetrofitClient
@@ -10,9 +11,11 @@ import com.dwiastari.wiss.databinding.ActivityDashboardAdminBinding
 import com.dwiastari.wiss.model.UserCountResponse
 import com.dwiastari.wiss.ui.admin.ebook.EbookAdminActivity
 import com.dwiastari.wiss.ui.admin.kegiatan.KegiatanAdminActivity
+import com.dwiastari.wiss.ui.admin.konselor.ListKonselorActivity
 import com.dwiastari.wiss.ui.admin.layanan.LayananAdminActivity
 import com.dwiastari.wiss.ui.admin.slide.SlideAdminActivity
 import com.dwiastari.wiss.ui.admin.video.VideoAdminActivity
+import com.dwiastari.wiss.ui.masyarakat.profile.EditPasswordActivity
 import com.dwiastari.wiss.utils.Constant
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -48,8 +51,29 @@ class DashboardAdminActivity : AppCompatActivity() {
             cardBook.setOnClickListener {
                 startActivity(Intent(this@DashboardAdminActivity, EbookAdminActivity::class.java))
             }
-            cardKeluar.setOnClickListener {
+            cardKonselor.setOnClickListener {
+                startActivity(Intent(this@DashboardAdminActivity, ListKonselorActivity::class.java))
+            }
+            cardChangePassword.setOnClickListener {
+                startActivity(Intent(this@DashboardAdminActivity, EditPasswordActivity::class.java))
+            }
+            btnLogout.setOnClickListener {
                 logout()
+            }
+    
+            val preferences = getSharedPreferences(Constant.SHARED_PREF_NAME, MODE_PRIVATE)
+            val userType = preferences.getString(Constant.KEY_TYPE, "")
+            
+            if(userType?.lowercase() == "superadmin"){
+                cardChangePassword.visibility = View.GONE
+            } else {
+                layoutGrid.columnCount = 1
+                cardLayanan.visibility = View.GONE
+                cardSlide.visibility = View.GONE
+                cardVideo.visibility = View.GONE
+                cardBook.visibility = View.GONE
+                cardKonselor.visibility = View.GONE
+                cardChangePassword.visibility = View.VISIBLE
             }
         }
     

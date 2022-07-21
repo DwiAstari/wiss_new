@@ -190,6 +190,16 @@ interface MasyarakatService{
     ): Call<SendNotificationResponse>
     
     @Multipart
+    @POST("akun_konselor/create_akun.php")
+    suspend fun createKonselor(
+        @Part("username") username: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("nama") nama: RequestBody,
+        @Part("bidang") bidang: RequestBody,
+        @Part foto: MultipartBody.Part?
+    ): Response<DefaultResponse>
+    
+    @Multipart
     @POST("akun_konselor/update_akun.php")
     suspend fun updateKonselor(
         @Part("username") username: RequestBody,
@@ -220,6 +230,14 @@ interface MasyarakatService{
     @FormUrlEncoded
     @POST("masyarakat/change_password.php")
     suspend fun changePasswordMasyarakat(
+        @Field("username") username: String,
+        @Field("old_password") oldPassword: String,
+        @Field("new_password") newPassword: String
+    ): Response<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("loginuser/change_password.php")
+    suspend fun changePasswordAdmin(
         @Field("username") username: String,
         @Field("old_password") oldPassword: String,
         @Field("new_password") newPassword: String

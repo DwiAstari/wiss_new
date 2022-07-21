@@ -10,10 +10,23 @@
         android:id="@+id/imageView4"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:adjustViewBounds="true"
         android:src="@drawable/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+    
+    <ImageButton
+        android:id="@+id/btn_logout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_logout_2"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -47,6 +60,7 @@
                 android:background="@color/primaryVariant"/>
 
             <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/layout_grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -73,14 +87,14 @@
                             android:id="@+id/imageView8"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/ic_baseline_event_note_24" />
+                            app:srcCompat="@drawable/ic_outline_article_24" />
     
                         <TextView
                             android:id="@+id/textView22"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Kegiatan"
+                            android:text="Artikel"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
                     </LinearLayout>
@@ -141,13 +155,13 @@
                            android:id="@+id/imageView11"
                            android:layout_width="100dp"
                            android:layout_height="100dp"
-                           app:srcCompat="@drawable/ic_baseline_event_note_24" />
+                           app:srcCompat="@drawable/ic_outline_photo_library_24" />
                        
                        <TextView
                            android:id="@+id/textView24"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:text="Slide"
+                           android:text="Galeri"
                            android:textColor="@color/black"
                            android:textSize="20sp"
                            android:gravity="center"/>
@@ -174,7 +188,7 @@
                             android:id="@+id/imageView9"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/ic_baseline_video_library_24" />
+                            app:srcCompat="@drawable/ic_outline_smart_display_24" />
                         
                         <TextView
                             android:id="@+id/textView23"
@@ -214,7 +228,7 @@
                             android:id="@+id/textView25"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
-                            android:text="Buku"
+                            android:text="E-Book"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -223,7 +237,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_keluar"
+                    android:id="@+id/card_konselor"
                     android:layout_width="wrap_content"
                     android:layout_height="150dp"
                     app:layout_columnWeight="1"
@@ -241,18 +255,53 @@
                             android:id="@+id/imageView14"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/ic_logout" />
+                            app:srcCompat="@drawable/ic_face" />
                         <TextView
                             android:id="@+id/textView28"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            android:text="Keluar"
+                            android:text="Konselor"
                             android:textColor="@color/black"
                             android:textSize="20dp" />
     
                     </LinearLayout>
 
+                </androidx.cardview.widget.CardView>
+    
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_change_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:visibility="gone"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="25dp">
+        
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+            
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center_horizontal"
+                            app:srcCompat="@drawable/ic_baseline_lock_24" />
+            
+                        <TextView
+                            android:id="@+id/textView29"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Ubah Password"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+    
                 </androidx.cardview.widget.CardView>
 
             </androidx.gridlayout.widget.GridLayout>

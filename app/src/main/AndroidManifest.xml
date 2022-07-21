@@ -27,6 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
+            android:name=".ui.admin.konselor.AddEditKonselorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.konselor.ListKonselorActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.masyarakat.profile.EditPasswordActivity"
             android:exported="false" />
         <activity
@@ -128,10 +134,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-            <!--
+        <!--
             Set custom default icon. This is used when no icon is set for incoming notification messages.
             See README(https://goo.gl/l4GJaQ) for more.
-            -->
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/logokeluargaku" />

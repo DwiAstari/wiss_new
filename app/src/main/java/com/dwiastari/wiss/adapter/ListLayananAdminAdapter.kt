@@ -7,28 +7,46 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemLayananBinding
+import com.dwiastari.wiss.model.Artikel
 import com.dwiastari.wiss.model.Layanan
 import com.dwiastari.wiss.ui.admin.layanan.EditLayananActivity
 
 class ListLayananAdminAdapter :
         RecyclerView.Adapter<ListLayananAdminAdapter.ListViewHolder>() {
-            private  val mData = ArrayList<Layanan>()
+    private  val mData = ArrayList<Layanan>()
+    private val mDataCopy = arrayListOf<Layanan>()
 
-            fun setData(items: ArrayList<Layanan>){
-                mData.clear()
-                mData.addAll(items)
-                notifyDataSetChanged()
+    fun setData(items: ArrayList<Layanan>){
+        mData.clear()
+        mData.addAll(items)
+        mDataCopy.clear()
+        mDataCopy.addAll(items)
+        notifyDataSetChanged()
+    }
+    
+    fun filterData(text: String){
+        mData.clear()
+        if(text.isEmpty()){
+            mData.addAll(mDataCopy)
+        } else {
+            for(layanan in mDataCopy){
+                if(layanan.layanan.lowercase().contains(text.lowercase())){
+                    mData.add(layanan)
+                }
             }
+        }
+        notifyDataSetChanged()
+    }
 
-           inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-               private val binding = ItemLayananBinding.bind(itemView)
-               fun bind(items: Layanan) {
-                   with(itemView) {
-                       binding.hariLayanan.text = "${items.id_hari}. ${items.hari}"
-                       binding.isiLayanan.text = items.layanan
-                   }
-               }
+   inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+       private val binding = ItemLayananBinding.bind(itemView)
+       fun bind(items: Layanan) {
+           with(itemView) {
+               binding.hariLayanan.text = "${items.id_hari}. ${items.hari}"
+               binding.isiLayanan.text = items.layanan
            }
+       }
+   }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View=

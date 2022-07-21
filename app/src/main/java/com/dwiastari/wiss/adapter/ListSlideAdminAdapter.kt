@@ -9,16 +9,34 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemSlideBinding
+import com.dwiastari.wiss.model.Layanan
 import com.dwiastari.wiss.model.Slide
 import com.dwiastari.wiss.ui.admin.slide.DetailSlideAdminActivity
 
 class ListSlideAdminAdapter :
         RecyclerView.Adapter<ListSlideAdminAdapter.ListViewHolder>() {
     private val mData = ArrayList<Slide>()
+    private val mDataCopy = arrayListOf<Slide>()
 
     fun setData(items: ArrayList<Slide>) {
         mData.clear()
         mData.addAll(items)
+        mDataCopy.clear()
+        mDataCopy.addAll(items)
+        notifyDataSetChanged()
+    }
+    
+    fun filterData(text: String){
+        mData.clear()
+        if(text.isEmpty()){
+            mData.addAll(mDataCopy)
+        } else {
+            for(slide in mDataCopy){
+                if(slide.judul_slide.lowercase().contains(text.lowercase())){
+                    mData.add(slide)
+                }
+            }
+        }
         notifyDataSetChanged()
     }
 
