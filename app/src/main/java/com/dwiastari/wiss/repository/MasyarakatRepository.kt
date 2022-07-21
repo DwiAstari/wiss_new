@@ -263,6 +263,15 @@ class MasyarakatRepository @Inject constructor(
         }
     }
     
+    suspend fun deleteKonselor(username: String) : Resource<DefaultResponse>{
+        masyarakatService.deleteKonselor(username).let {
+            if(it.isSuccessful){
+                it.body()?.let { return Resource.Success(it) }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
     suspend fun updateMasyarakat(username: RequestBody, nama: RequestBody, umur: RequestBody, hp: RequestBody, domisili: RequestBody,  foto: MultipartBody
     .Part?):
             Resource<DefaultResponse>{

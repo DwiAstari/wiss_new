@@ -216,6 +216,10 @@ interface MasyarakatService{
         @Field("new_password") newPassword: String
     ): Response<DefaultResponse>
     
+    @FormUrlEncoded
+    @POST("akun_konselor/delete_akun.php")
+    suspend fun deleteKonselor(@Field("username") username: String) : Response<DefaultResponse>
+    
     @Multipart
     @POST("masyarakat/update_masyarakat.php")
     suspend fun updateMasyarakat(

@@ -54,4 +54,21 @@ class KonselorViewModel @Inject constructor(
             }
         }
     }
+    
+    fun deleteKonselor(username: String){
+        isLoading.value = true
+        viewModelScope.launch {
+            when(val response = repository.deleteKonselor(username)){
+                is Resource.Success -> {
+                    isLoading.value = false
+                    message.value = response.data?.message
+                }
+            
+                is Resource.Error -> {
+                    isLoading.value = false
+                    message.value = "error"
+                }
+            }
+        }
+    }
 }

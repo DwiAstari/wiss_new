@@ -1,6 +1,7 @@
 package com.dwiastari.wiss.ui.admin.konselor
 
 import android.Manifest
+import android.app.ActionBar
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -10,6 +11,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -77,6 +79,9 @@ class AddEditKonselorActivity : AppCompatActivity() {
                 Glide.with(this@AddEditKonselorActivity)
                     .load(konselor.foto)
                     .into(foto)
+                
+            } else {
+                adjustButton()
             }
             
             foto.setOnClickListener {
@@ -114,6 +119,10 @@ class AddEditKonselorActivity : AppCompatActivity() {
                         Toast.makeText(this@AddEditKonselorActivity, "Foto belum dipilih", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
+            
+            btnDelete.setOnClickListener {
+                viewModel.deleteKonselor(etUsername.text.toString())
             }
         }
     }
@@ -156,5 +165,12 @@ class AddEditKonselorActivity : AppCompatActivity() {
         }
         Log.d("path", path)
         return path
+    }
+    
+    private fun adjustButton(){
+        binding.btnDelete.visibility = View.GONE
+        val currentParams = binding.btnSave.layoutParams as LinearLayout.LayoutParams
+        currentParams.weight = 2f
+        binding.btnDelete.requestLayout()
     }
 }

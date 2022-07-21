@@ -166,18 +166,37 @@
                 android:scaleType="fitXY"
                 android:background="#b2b2b2"/>
             
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Simpan"
-                android:textAllCaps="false"/>
+                android:weightSum="2"
+                android:orientation="horizontal">
+    
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Delete Akun"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/red"/>
+                
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="40dp"
+                    android:text="Simpan"
+                    android:textAllCaps="false"/>
+                
+            </LinearLayout>
     
         </LinearLayout>
         
     </androidx.core.widget.NestedScrollView>
-    
     
     <ProgressBar
         android:id="@+id/loading"
