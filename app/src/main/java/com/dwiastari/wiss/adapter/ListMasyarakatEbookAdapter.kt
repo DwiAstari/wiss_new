@@ -14,10 +14,28 @@ import com.dwiastari.wiss.model.Ebook
 
 class ListMasyarakatEbookAdapter : RecyclerView.Adapter<ListMasyarakatEbookAdapter.ListViewHolder>() {
     private val mData = ArrayList<Ebook>()
+    private val mDataCopy = arrayListOf<Ebook>()
+    
     
     fun setData(items: ArrayList<Ebook>) {
         mData.clear()
         mData.addAll(items)
+        mDataCopy.clear()
+        mDataCopy.addAll(items)
+        notifyDataSetChanged()
+    }
+    
+    fun filterData(text: String){
+        mData.clear()
+        if(text.isEmpty()){
+            mData.addAll(mDataCopy)
+        } else {
+            for(ebook in mDataCopy){
+                if(ebook.judul_ebook.lowercase().contains(text.lowercase())){
+                    mData.add(ebook)
+                }
+            }
+        }
         notifyDataSetChanged()
     }
     

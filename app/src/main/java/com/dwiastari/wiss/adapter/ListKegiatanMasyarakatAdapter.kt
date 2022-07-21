@@ -17,10 +17,27 @@ import com.dwiastari.wiss.ui.admin.kegiatan.EditKegiatanActivity
 class ListKegiatanMasyarakatAdapter :
     RecyclerView.Adapter<ListKegiatanMasyarakatAdapter.ListViewHolder>() {
     private val mData = ArrayList<Artikel>()
+    private val mDataCopy = arrayListOf<Artikel>()
 
     fun setData(items: ArrayList<Artikel>) {
         mData.clear()
         mData.addAll(items)
+        mDataCopy.clear()
+        mDataCopy.addAll(items)
+        notifyDataSetChanged()
+    }
+    
+    fun filterData(text: String){
+        mData.clear()
+        if(text.isEmpty()){
+            mData.addAll(mDataCopy)
+        } else {
+            for(artikel in mDataCopy){
+                if(artikel.judul_artikel.lowercase().contains(text.lowercase())){
+                    mData.add(artikel)
+                }
+            }
+        }
         notifyDataSetChanged()
     }
 

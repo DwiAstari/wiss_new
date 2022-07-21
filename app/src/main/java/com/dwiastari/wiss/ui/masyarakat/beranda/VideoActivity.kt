@@ -2,6 +2,8 @@ package com.dwiastari.wiss.ui.masyarakat.beranda
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -29,6 +31,20 @@ class VideoActivity : AppCompatActivity() {
         binding.rvVideo.setHasFixedSize(true)
         binding.rvVideo.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         showRecyclerList()
+        binding.etCari.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            
+            }
+        
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            
+            }
+        
+            override fun afterTextChanged(s: Editable?) {
+                adapter.filterData(s.toString())
+            }
+        
+        })
     }
     
     private fun showRecyclerList() {

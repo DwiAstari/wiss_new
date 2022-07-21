@@ -13,15 +13,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dwiastari.wiss.R
 import com.dwiastari.wiss.databinding.ItemMasyarakatEbookBinding
+import com.dwiastari.wiss.model.Ebook
 import com.dwiastari.wiss.model.Video
 
 class ListMasyarakatVideoAdapter :
     RecyclerView.Adapter<ListMasyarakatVideoAdapter.ListViewHolder>() {
     private val mData = ArrayList<Video>()
+    private val mDataCopy = arrayListOf<Video>()
     
     fun setData(items: ArrayList<Video>) {
         mData.clear()
         mData.addAll(items)
+        mDataCopy.clear()
+        mDataCopy.addAll(items)
+        notifyDataSetChanged()
+    }
+    
+    fun filterData(text: String){
+        mData.clear()
+        if(text.isEmpty()){
+            mData.addAll(mDataCopy)
+        } else {
+            for(video in mDataCopy){
+                if(video.judul_video.lowercase().contains(text.lowercase())){
+                    mData.add(video)
+                }
+            }
+        }
         notifyDataSetChanged()
     }
     
