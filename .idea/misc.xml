@@ -26,15 +26,40 @@
         <entry key="..\:/wiss/app/src/main/res/layout/indicator_selector.xml" value="0.16979166666666667" />
         <entry key="..\:/wiss/app/src/main/res/layout/onboarding_screen_layout.xml" value="0.12318840579710146" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/background_chat.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/background_chat_2.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/background_pesan.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/button_sat.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/button_set.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/circle.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/circle_border.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_about_filled.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_about_outlined.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_age.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_baseline_delete.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_camera.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_chat.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_edit.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_home.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_home_filled.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_home_outlined.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_pesan_filled.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_pesan_outlined.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_profile.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_profile_filled.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_profile_outlined.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/ic_question_answer.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/indicator_selector.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/rounded_corner.xml" value="0.13425925925925927" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/selected.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/selector_about.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/selector_beranda.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/selector_pesan.xml" value="0.26614583333333336" />
+        <entry key="..\:/wiss_new/app/src/main/res/drawable/selector_profile.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/shape.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/drawable/unselected.xml" value="0.26614583333333336" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/activity_add_ebook.xml" value="0.12708333333333333" />
@@ -82,7 +107,7 @@
         <entry key="..\:/wiss_new/app/src/main/res/layout/item_video.xml" value="0.16979166666666667" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/onboarding_screen_layout.xml" value="0.25" />
         <entry key="..\:/wiss_new/app/src/main/res/layout/slide_walktrough.xml" value="0.1" />
-        <entry key="..\:/wiss_new/app/src/main/res/menu/menu.xml" value="0.12708333333333333" />
+        <entry key="..\:/wiss_new/app/src/main/res/menu/menu.xml" value="0.1" />
         <entry key="..\:/wiss_new/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
         <entry key="app/src/main/res/layout/activity_kegiatan_admin.xml" value="0.178125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.32653985507246375" />
