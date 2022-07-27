@@ -37,6 +37,9 @@ class PesanFragment : Fragment() {
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    
+        val firebase = FirebaseDatabase.getInstance()
+        val db = firebase.reference
         
         listPesanAdapter = ListPesanAdapter()
         
@@ -48,6 +51,7 @@ class PesanFragment : Fragment() {
         
         prefences = requireActivity().getSharedPreferences(Constant.SHARED_PREF_NAME, MODE_PRIVATE)
         val userType = prefences.getString(Constant.KEY_TYPE, "")
+        val username = prefences.getString(Constant.KEY_USERNAME, "")
         
         if(userType == "masyarakat"){
             with(viewModel){
@@ -60,15 +64,23 @@ class PesanFragment : Fragment() {
                 listKonselor.observe(requireActivity()){
                     listPesan.clear()
                     it.forEach{ konselor ->
-                        listPesan.add(PesanModel(konselor.foto, konselor.bidang_konselor, konselor.nama_akun, konselor.username))
+                        var newNotif: Boolean? = null
+                        db.child("masyarakat_new_notif").child(username!!).child(konselor.username).addValueEventListener(object: ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                newNotif = dataSnapshot.child("newNotif").value as Boolean?
+                                listPesan.add(PesanModel(konselor.foto, konselor.bidang_konselor, konselor.nama_akun, konselor.username, newNotif?:false, 0))
+                                listPesanAdapter.setData(listPesan, ListPesanAdapter.MASYARAKAT)
+                            }
+    
+                            override fun onCancelled(p0: DatabaseError) {
+                            
+                            }
+    
+                        })
                     }
-                    listPesanAdapter.setData(listPesan, ListPesanAdapter.MASYARAKAT)
                 }
             }
         } else {
-            val username = prefences.getString(Constant.KEY_USERNAME, "")
-            val firebase = FirebaseDatabase.getInstance()
-            val db = firebase.reference
             
             db.child("konselor_room").child(username!!).addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -76,10 +88,12 @@ class PesanFragment : Fragment() {
                     for(pesanSnapshot in snapshot.children){
                         val masyarakat = pesanSnapshot.getValue(ListMasyarakat::class.java)
                         masyarakat?.let {
-                            listPesan.add(PesanModel(masyarakat.image!!, masyarakat.name!!, "", masyarakat.username!!))
+                            listPesan.add(PesanModel(masyarakat.image!!, masyarakat.name!!, it.lastMessage!!, masyarakat.username!!, it.newNotif!!, it
+                                .timeMillis!!))
                         }
                         
                     }
+                    val sortedListPesan = listPesan.sortedByDescending { it.timeInMillis }
                     listPesanAdapter.setData(listPesan, ListPesanAdapter.KONSELOR)
                 }
     

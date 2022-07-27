@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.dwiastari.wiss.MainActivity
 import com.dwiastari.wiss.api.RetrofitClient
 import com.dwiastari.wiss.databinding.ActivityDashboardAdminBinding
 import com.dwiastari.wiss.model.UserCountResponse
 import com.dwiastari.wiss.ui.admin.ebook.EbookAdminActivity
+import com.dwiastari.wiss.ui.admin.graph.GraphKonselingActivity
+import com.dwiastari.wiss.ui.admin.graph.GraphKonselingViewModel
+import com.dwiastari.wiss.ui.admin.graph.GraphPengunjungActivity
+import com.dwiastari.wiss.ui.admin.graph.GraphPengunjungViewModel
 import com.dwiastari.wiss.ui.admin.kegiatan.KegiatanAdminActivity
 import com.dwiastari.wiss.ui.admin.konselor.ListKonselorActivity
 import com.dwiastari.wiss.ui.admin.layanan.LayananAdminActivity
@@ -21,14 +26,19 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
+@AndroidEntryPoint
 class DashboardAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardAdminBinding
     private val TIME_INTERVAL = 2000 // # milliseconds, desired time passed between two back presses.
     private var mBackPressed: Long = 0
+    private val viewModelPengunjung: GraphPengunjungViewModel by viewModels()
+    private val viewModelKonseling: GraphKonselingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +85,14 @@ class DashboardAdminActivity : AppCompatActivity() {
                 cardKonselor.visibility = View.GONE
                 cardChangePassword.visibility = View.VISIBLE
             }
+            
+            btnKunjungandiadmin.setOnClickListener {
+                startActivity(Intent(this@DashboardAdminActivity, GraphPengunjungActivity::class.java))
+            }
+            
+            btnJumlahKonseling.setOnClickListener {
+                startActivity(Intent(this@DashboardAdminActivity, GraphKonselingActivity::class.java))
+            }
         }
     
         val api = RetrofitClient().getInstance()
@@ -91,20 +109,24 @@ class DashboardAdminActivity : AppCompatActivity() {
     
         })
         
-        val firebase = FirebaseDatabase.getInstance()
-        val db = firebase.reference
+        val year = Calendar.getInstance().get(Calendar.YEAR)
         
-        db.child("chat").addValueEventListener(object: ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val number = snapshot.childrenCount / 2
-                binding.textView18.text = "Jumlah Konseling: $number"
+        viewModelKonseling.graphPayload.observe(this@DashboardAdminActivity){
+            it.payload?.let { payload ->
+                val count = payload.sumOf { it.jumlah.toInt() }
+                binding.jmlKonseling.text = count.toString()
             }
+        }
+        viewModelKonseling.getKonseling(year.toString())
     
-            override fun onCancelled(p0: DatabaseError) {
-            
+        viewModelPengunjung.graphPayload.observe(this@DashboardAdminActivity){
+            it.payload?.let { payload ->
+                val count = payload.sumOf { it.total.toInt() }
+                binding.jmlKunjungan.text = count.toString()
             }
-    
-        })
+        }
+        viewModelPengunjung.getKunjungan(year.toString())
+        
     }
     
     override fun onBackPressed() {

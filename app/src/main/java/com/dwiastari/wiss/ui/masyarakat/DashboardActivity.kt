@@ -105,6 +105,10 @@ class DashboardActivity : AppCompatActivity() {
         })
     }
     
+    fun openChat(){
+        binding.bnv.selectedItemId = R.id.item_pesan
+    }
+    
     override fun onBackPressed() {
         if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
             super.onBackPressed()

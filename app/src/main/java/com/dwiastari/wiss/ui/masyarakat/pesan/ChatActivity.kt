@@ -1,11 +1,12 @@
 package com.dwiastari.wiss.ui.masyarakat.pesan
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dwiastari.wiss.adapter.ChatAdapter
 import com.dwiastari.wiss.api.RetrofitClient
@@ -21,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 @AndroidEntryPoint
 class ChatActivity : AppCompatActivity() {
@@ -29,7 +31,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var masyarakat: Masyarakat
     private val viewModel: ProfileViewModel by viewModels()
     private val listChat = arrayListOf<Message>()
-    private lateinit var token: String
+    private var token = ""
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,17 +72,33 @@ class ChatActivity : AppCompatActivity() {
             
             btnSend.setOnClickListener {
                 val message = edtChat.text.toString()
-                val messageObject = Message(message, currentUser!!)
+                val locale = Locale("in", "ID")
+                val calendarInstance = Calendar.getInstance(locale)
+                val calendarMinute = calendarInstance.get(Calendar.MINUTE)
+                lateinit var minute: String
+                if(calendarMinute == 0)
+                    minute = "00"
+                else if(calendarMinute < 10)
+                    minute = "0$calendarMinute"
+                val date = "${calendarInstance.get(Calendar.DAY_OF_MONTH)}-${calendarInstance.get(Calendar.MONTH)}-${calendarInstance.get(Calendar.YEAR)}"
+                val time = "${calendarInstance.get(Calendar.HOUR_OF_DAY)}.$minute"
+                val timeMillis = System.currentTimeMillis()
+                val messageObject = Message(message, currentUser!!, date, time)
                 
-                sendMessage(message, currentName!!, token)
+                if(token.isNotEmpty()){
+                    sendMessage(message, currentName!!, token)
+                }
                 
                 db.child("chat").child(roomSender).push()
                     .setValue(messageObject).addOnSuccessListener {
                         db.child("chat").child(roomReceiver).push()
                             .setValue(messageObject).addOnSuccessListener {
                                 if(currentType == "masyarakat"){
-                                    val masyarakatObject = ListMasyarakat(currentUser, masyarakat.foto, masyarakat.nama_masyarakat)
+                                    val masyarakatObject = ListMasyarakat(currentUser, masyarakat.foto, masyarakat.nama_masyarakat, message, true, timeMillis)
                                     db.child("konselor_room").child(receiverUsername!!).child(currentUser).setValue(masyarakatObject)
+                                } else {
+                                    val newNotifObject = MasyarakatNewNotif(currentUser, true)
+                                    db.child("masyarakat_new_notif").child(receiverUsername!!).child(currentUser).setValue(newNotifObject)
                                 }
                             }
                     }
@@ -92,8 +110,25 @@ class ChatActivity : AppCompatActivity() {
                 adapter = chatAdapter
                 val linearLayoutManager = LinearLayoutManager(this@ChatActivity)
                 linearLayoutManager.stackFromEnd = true
-                layoutManager = linearLayoutManager
+//                layoutManager = linearLayoutManager
                 hasFixedSize()
+                addOnScrollListener(object: RecyclerView.OnScrollListener(){
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        super.onScrolled(recyclerView, dx, dy)
+                        val linearLayoutMgr = LinearLayoutManager::class.java.cast(recyclerView.layoutManager)
+                        val totalItemCount = linearLayoutMgr.itemCount
+                        val lastVisible = linearLayoutMgr.findLastVisibleItemPosition()
+    
+                        val endHasBeenReached = lastVisible + 5 >= totalItemCount
+                        if (totalItemCount > 0 && endHasBeenReached) {
+                            if(currentType == "masyarakat"){
+                                db.child("masyarakat_new_notif").child(currentUser).child(receiverUsername).child("newNotif").setValue(false)
+                            } else {
+                                db.child("konselor_room").child(currentUser).child(receiverUsername).child("newNotif").setValue(false)
+                            }
+                        }
+                    }
+                })
             }
             
             db.child("chat").child(roomSender).addValueEventListener(object : ValueEventListener{
@@ -104,6 +139,7 @@ class ChatActivity : AppCompatActivity() {
                         listChat.add(message!!)
                     }
                     chatAdapter.setData(listChat)
+//                    rvChat.smoothScrollToPosition(listChat.size)
                 }
     
                 override fun onCancelled(p0: DatabaseError) {

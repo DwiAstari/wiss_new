@@ -27,6 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wiss">
         <activity
+            android:name=".ui.admin.graph.GraphKonselingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.graph.GraphPengunjungActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.admin.konselor.AddEditKonselorActivity"
             android:exported="false" />
         <activity

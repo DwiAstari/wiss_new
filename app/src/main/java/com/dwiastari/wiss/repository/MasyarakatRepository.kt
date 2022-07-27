@@ -317,4 +317,48 @@ class MasyarakatRepository @Inject constructor(
             return Resource.Error(it.message())
         }
     }
+    
+    suspend fun getListYearKunjungan(): Resource<ListYearResponse>{
+        masyarakatService.getListYearKunjungan().let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getListYearKonseling(): Resource<ListYearResponse>{
+        masyarakatService.getListYearKonseling().let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getListKunjungan(year: String): Resource<GraphPengunjungResponse>{
+        masyarakatService.getKunjunganGraph(year).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
+    
+    suspend fun getListKonseling(year: String): Resource<GraphKonselingResponse>{
+        masyarakatService.getKonselingGraph(year).let {
+            if(it.isSuccessful){
+                it.body()?.let {
+                    return Resource.Success(it)
+                }
+            }
+            return Resource.Error(it.message())
+        }
+    }
 }

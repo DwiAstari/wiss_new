@@ -8,8 +8,8 @@
     
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_pesan"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,5 +38,16 @@
         app:layout_constraintTop_toBottomOf="@id/tv1"
         app:layout_constraintBottom_toBottomOf="@id/img_pesan"
         tools:text="Pesan"/>
+    
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/newNotif"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_margin="10dp"
+        android:src="@color/primaryVariant"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+        
 
 </androidx.constraintlayout.widget.ConstraintLayout>

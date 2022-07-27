@@ -70,7 +70,8 @@ class ListPesanAdapter: RecyclerView.Adapter<ListPesanAdapter.ViewHolder>() {
                         .load(pesan.image)
                         .into(binding.imgPesan)
                 }
-                
+    
+                binding.newNotif.visibility = if(pesan.newNotif) View.VISIBLE else View.GONE
                 
                 setOnClickListener {
                     val intent = Intent(context, ChatActivity::class.java)

@@ -46,7 +46,7 @@ class AddEditKonselorActivity : AppCompatActivity() {
         binding = ActivityAddEditKonselorBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        val listBidang = arrayOf("Layanan Konseling Pranikah", "Layanan Konseling KB dan Kes. Reproduksi", "Layanan Keluarga Remaja dan Remaja", "Layanan " +
+        val listBidang = arrayOf("Layanan Konseling Pranikah", "Layanan Konseling KB dan Kes. Reproduksi", "Layanan Keluarga Remaja da Remaja", "Layanan " +
                 "Konseling Keluarga Lansia dan Lansia", "Pembinaan Usaha Ekonomi Keluarga", "Layanan Konseling Keluarga Balita dan Anak", "Layanan Informasi " +
                 "Kependudukan dan KB", "Layanan Konseling Keluarga Harmonis")
     

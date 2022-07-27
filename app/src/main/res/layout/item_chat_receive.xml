@@ -6,25 +6,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideMax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.8"
-        android:orientation="vertical"/>
-    
-    <TextView
-        android:id="@+id/message"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minWidth="100dp"
         android:background="@drawable/background_chat_2"
         android:padding="10dp"
-        android:textColor="@color/black"
+        android:minWidth="100dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_max="wrap"
-        app:layout_constraintWidth_percent="0.8"
-        tools:text="test"/>
+        app:layout_constraintWidth_percent="0.8">
+        
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="asjrtalksttklastkalskjtkjaskljtklasjltjkalsjtljasltjlksajktjlasjtkasltj"/>
+        
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="18.02"
+            app:layout_constraintTop_toBottomOf="@id/message"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

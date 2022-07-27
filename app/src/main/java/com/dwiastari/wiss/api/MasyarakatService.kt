@@ -246,4 +246,22 @@ interface MasyarakatService{
         @Field("old_password") oldPassword: String,
         @Field("new_password") newPassword: String
     ): Response<DefaultResponse>
+    
+    @FormUrlEncoded
+    @POST("grafik/get_kunjungan_by_year.php")
+    suspend fun getKunjunganGraph(
+        @Field("year") year: String
+    ): Response<GraphPengunjungResponse>
+    
+    @FormUrlEncoded
+    @POST("grafik/get_konseling_by_year.php")
+    suspend fun getKonselingGraph(
+        @Field("year") year: String
+    ): Response<GraphKonselingResponse>
+    
+    @GET("grafik/get_list_year_kunjungan.php")
+    suspend fun getListYearKunjungan(): Response<ListYearResponse>
+    
+    @GET("grafik/get_list_year_konseling.php")
+    suspend fun getListYearKonseling(): Response<ListYearResponse>
 }
