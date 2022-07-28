@@ -2,6 +2,9 @@ package com.dwiastari.wiss.ui.masyarakat.pesan
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -48,11 +51,15 @@ class ChatActivity : AppCompatActivity() {
         val currentType = preferences.getString(Constant.KEY_TYPE, "")
         val currentName = preferences.getString(Constant.KEY_NAME, "")
     
-        viewModel.onLoad(currentUser!!, currentType!!)
-        
         viewModel.masyarakat.observe(this){
             masyarakat = it
         }
+    
+        viewModel.loading.observe(this){
+            binding.loading.visibility = if (it) View.VISIBLE else View.GONE
+        }
+    
+        viewModel.onLoad(currentUser!!, currentType!!)
     
         val chatAdapter = ChatAdapter(currentUser!!)
         
@@ -75,11 +82,13 @@ class ChatActivity : AppCompatActivity() {
                 val locale = Locale("in", "ID")
                 val calendarInstance = Calendar.getInstance(locale)
                 val calendarMinute = calendarInstance.get(Calendar.MINUTE)
-                lateinit var minute: String
+                var minute = ""
                 if(calendarMinute == 0)
                     minute = "00"
                 else if(calendarMinute < 10)
                     minute = "0$calendarMinute"
+                else
+                    minute = calendarMinute.toString()
                 val date = "${calendarInstance.get(Calendar.DAY_OF_MONTH)}-${calendarInstance.get(Calendar.MONTH)}-${calendarInstance.get(Calendar.YEAR)}"
                 val time = "${calendarInstance.get(Calendar.HOUR_OF_DAY)}.$minute"
                 val timeMillis = System.currentTimeMillis()
@@ -95,15 +104,32 @@ class ChatActivity : AppCompatActivity() {
                             .setValue(messageObject).addOnSuccessListener {
                                 if(currentType == "masyarakat"){
                                     val masyarakatObject = ListMasyarakat(currentUser, masyarakat.foto, masyarakat.nama_masyarakat, message, true, timeMillis)
-                                    db.child("konselor_room").child(receiverUsername!!).child(currentUser).setValue(masyarakatObject)
+                                    db.child("konselor_room").child(receiverUsername).child(currentUser).setValue(masyarakatObject)
+                                    val newNotifObject = MasyarakatNewNotif(receiverUsername, false)
+                                    db.child("masyarakat_new_notif").child(currentUser).child(receiverUsername).setValue(newNotifObject)
                                 } else {
                                     val newNotifObject = MasyarakatNewNotif(currentUser, true)
-                                    db.child("masyarakat_new_notif").child(receiverUsername!!).child(currentUser).setValue(newNotifObject)
+                                    db.child("masyarakat_new_notif").child(receiverUsername).child(currentUser).setValue(newNotifObject)
+                                    db.child("konselor_room").child(currentUser).child(receiverUsername).apply {
+                                        child("lastMessage").setValue(message)
+                                        child("timeMillis").setValue(timeMillis)
+                                        child("newNotif").setValue(false)
+                                    }
                                 }
                             }
                     }
                 
                 edtChat.setText("")
+                rvChat.smoothScrollToPosition(listChat.size)
+            }
+            
+            edtChat.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                Log.d("hasfocus", hasFocus.toString())
+                if(hasFocus){
+                    Handler().postDelayed({
+                        rvChat.smoothScrollToPosition(listChat.size)
+                    }, 1000)
+                }
             }
             
             rvChat.apply {
@@ -139,7 +165,7 @@ class ChatActivity : AppCompatActivity() {
                         listChat.add(message!!)
                     }
                     chatAdapter.setData(listChat)
-//                    rvChat.smoothScrollToPosition(listChat.size)
+                    rvChat.smoothScrollToPosition(listChat.size)
                 }
     
                 override fun onCancelled(p0: DatabaseError) {
