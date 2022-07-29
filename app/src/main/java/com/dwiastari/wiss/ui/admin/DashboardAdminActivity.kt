@@ -90,9 +90,9 @@ class DashboardAdminActivity : AppCompatActivity() {
                 startActivity(Intent(this@DashboardAdminActivity, GraphPengunjungActivity::class.java))
             }
             
-            btnJumlahKonseling.setOnClickListener {
-                startActivity(Intent(this@DashboardAdminActivity, GraphKonselingActivity::class.java))
-            }
+//            btnJumlahKonseling.setOnClickListener {
+//                startActivity(Intent(this@DashboardAdminActivity, GraphKonselingActivity::class.java))
+//            }
         }
     
         val api = RetrofitClient().getInstance()
@@ -111,21 +111,36 @@ class DashboardAdminActivity : AppCompatActivity() {
         
         val year = Calendar.getInstance().get(Calendar.YEAR)
         
-        viewModelKonseling.graphPayload.observe(this@DashboardAdminActivity){
-            it.payload?.let { payload ->
-                val count = payload.sumOf { it.jumlah.toInt() }
-                binding.jmlKonseling.text = count.toString()
-            }
-        }
-        viewModelKonseling.getKonseling(year.toString())
+//        viewModelKonseling.graphPayload.observe(this@DashboardAdminActivity){
+//            it.payload?.let { payload ->
+//                val count = payload.sumOf { it.jumlah.toInt() }
+//                binding.jmlKonseling.text = count.toString()
+//            }
+//        }
+//        viewModelKonseling.getKonseling(year.toString())
+//
+//        viewModelPengunjung.graphPayload.observe(this@DashboardAdminActivity){
+//            it.payload?.let { payload ->
+//                val count = payload.sumOf { it.total.toInt() }
+//                binding.jmlKunjungan.text = count.toString()
+//            }
+//        }
+//        viewModelPengunjung.getKunjungan(year.toString())
     
-        viewModelPengunjung.graphPayload.observe(this@DashboardAdminActivity){
-            it.payload?.let { payload ->
-                val count = payload.sumOf { it.total.toInt() }
-                binding.jmlKunjungan.text = count.toString()
+        val firebase = FirebaseDatabase.getInstance()
+        val db = firebase.reference
+        
+        db.child("chat").addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val number = snapshot.childrenCount / 2
+                binding.jmlKonseling.text = "Jumlah Konseling: $number"
             }
-        }
-        viewModelPengunjung.getKunjungan(year.toString())
+        
+            override fun onCancelled(p0: DatabaseError) {
+            
+            }
+        
+        })
         
     }
     
