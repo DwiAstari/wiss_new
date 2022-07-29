@@ -46,7 +46,11 @@ class ListKegiatanMasyarakatAdapter :
         fun bind(items: Artikel) {
             with(itemView) {
                 binding.judulartikel.text = items.judul_artikel
-                binding.tvIsiArtikel.text = items.isi_artikel
+                binding.tvIsiArtikel.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Html.fromHtml(items.isi_artikel, Html.FROM_HTML_MODE_COMPACT)
+                } else {
+                    Html.fromHtml(items.isi_artikel)
+                }
                 
                 Glide.with(context)
                     .load(items.foto_kegiatan)
